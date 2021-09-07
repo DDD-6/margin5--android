@@ -6,7 +6,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Wine"
-include ':app'
-include ':domain'
-include ':local'
-include ':remote'
+include(":app")
+include(":domain")
+include(":local")
+include(":remote")
