@@ -10,9 +10,11 @@ include(":app")
 
 include(":libraries")
 include(":libraries:domain")
+include(":libraries:data")
 include(":libraries:local")
 include(":libraries:remote")
 
 include(":feature")
 include(":feature:main")
 include(":feature:splash")
+
