@@ -18,3 +18,4 @@ include(":feature")
 include(":feature:main")
 include(":feature:splash")
 
+include(":core")
