@@ -14,3 +14,4 @@ include(":libraries:local")
 include(":libraries:remote")
 
 include(":feature")
+include(":feature:main")
