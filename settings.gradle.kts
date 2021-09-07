@@ -15,3 +15,4 @@ include(":libraries:remote")
 
 include(":feature")
 include(":feature:main")
+include(":feature:splash")
