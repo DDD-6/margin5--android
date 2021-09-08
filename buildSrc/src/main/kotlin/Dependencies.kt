@@ -4,9 +4,13 @@ object Dependencies {
     object DI {
         object Version {
             const val javaxInject: String = "1"
+            const val hiltVersion: String = "2.38.1"
         }
 
         const val javaxInject: String = "javax.inject:javax.inject:${Version.javaxInject}"
+
+        const val hiltAndroid = "com.google.dagger:hilt-android:${Version.hiltVersion}"
+        const val hiltCompiler = "com.google.dagger:hilt-compiler:${Version.hiltVersion}"
     }
 
     object Coroutines {
@@ -52,6 +56,8 @@ interface Libraries {
 }
 
 object ProjectLibraries {
+    const val core: String = ":core"
+
     const val domain: String = ":libraries:domain"
     const val data: String = ":libraries:data"
     const val remote: String = ":libraries:remote"

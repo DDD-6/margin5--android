@@ -4,20 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.margin.wine.data.source.repository.WineRepositoryImpl
 import com.margin.wine.domain.usecase.wine.FetchHomeWineListUseCase
-import com.margin.wine.local.datasource.WineLocalDataSourceImpl
-import com.margin.wine.remote.source.WineRemoteDataSourceImpl
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
-
-    private val fetchHomeWineListUseCase = FetchHomeWineListUseCase(
-        WineRepositoryImpl(
-            WineRemoteDataSourceImpl(),
-            WineLocalDataSourceImpl()
-        )
-    )
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val fetchHomeWineListUseCase: FetchHomeWineListUseCase
+): ViewModel() {
 
     private val _wineCountLiveData = MutableLiveData<Int>()
     val wineCountLiveData: LiveData<Int> get() = _wineCountLiveData
