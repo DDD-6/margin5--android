@@ -1,3 +1,8 @@
+import ProjectLibraries.data
+import ProjectLibraries.domain
+import ProjectLibraries.local
+import ProjectLibraries.remote
+
 plugins {
     id("com.android.library")
     kotlin("android")
@@ -21,7 +26,13 @@ android {
 }
 
 dependencies {
+    implementation(project(domain))
+    implementation(project(data))
+    implementation(project(remote))
+    implementation(project(local))
+
     implementation("androidx.core:core-ktx:1.6.0")
+    implementation("androidx.fragment:fragment-ktx:1.3.6")
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.0")
