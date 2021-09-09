@@ -19,3 +19,4 @@ include(":feature:main")
 include(":feature:splash")
 
 include(":core")
+include(":libraries:navigator")

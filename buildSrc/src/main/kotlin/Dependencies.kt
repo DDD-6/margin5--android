@@ -62,8 +62,11 @@ object ProjectLibraries {
     const val data: String = ":libraries:data"
     const val remote: String = ":libraries:remote"
     const val local: String = ":libraries:local"
+
+    const val navigator: String = ":libraries:navigator"
 }
 
 object Features {
+    const val splash: String = ":feature:splash"
     const val main: String = ":feature:main"
 }
