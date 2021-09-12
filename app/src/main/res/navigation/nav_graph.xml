@@ -21,12 +21,8 @@
       app:popExitAnim="@anim/slide_in_right"
       app:popUpToInclusive="true"
       app:popUpTo="@+id/mainFragment"
-      app:destination="@id/mainFragment" />
+      app:destination="@id/main_navigation" />
   </fragment>
 
-  <fragment
-    android:id="@+id/mainFragment"
-    android:name="com.margin.wine.main.MainFragment"
-    android:label="MainFragment"
-    tools:layout="@layout/fragment_main"/>
+  <include app:graph="@navigation/main_navigation"/>
 </navigation>

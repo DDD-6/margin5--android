@@ -60,6 +60,12 @@ dependencies {
     implementation(project(Features.splash))
     implementation(project(Features.main))
 
+    //Room
+    val room_version = "2.3.0"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
+    kapt("androidx.room:room-compiler:$room_version")
 
     val nav_version = "2.3.5"
 
@@ -74,7 +80,7 @@ dependencies {
     androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
 
     // Jetpack Compose Integration
-    implementation("androidx.navigation:navigation-compose:2.4.0-alpha08")
+    //implementation("androidx.navigation:navigation-compose:2.4.0-alpha08")
 
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.appcompat:appcompat:1.3.1")

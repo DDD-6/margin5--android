@@ -6,6 +6,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -33,6 +34,12 @@ dependencies {
     kapt(Dependencies.DI.hiltCompiler)
 
     implementation(Dependencies.Coroutines.core)
+
+    val nav_version = "2.3.5"
+
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.fragment:fragment-ktx:1.3.6")
