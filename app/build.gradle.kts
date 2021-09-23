@@ -1,6 +1,14 @@
+import ProjectLibraries.core
+import ProjectLibraries.domain
+import ProjectLibraries.data
+import ProjectLibraries.local
+import ProjectLibraries.remote
+
 plugins {
     id("com.android.application")
     kotlin("android")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -34,6 +42,17 @@ android {
 }
 
 dependencies {
+    implementation(project(core))
+    implementation(project(domain))
+    implementation(project(data))
+    implementation(project(remote))
+    implementation(project(local))
+
+    implementation(Dependencies.DI.hiltAndroid)
+    kapt(Dependencies.DI.hiltCompiler)
+
+    implementation(Dependencies.Coroutines.core)
+
     implementation(project(Features.main))
 
     implementation("androidx.core:core-ktx:1.6.0")

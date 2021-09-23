@@ -4,8 +4,9 @@ import com.margin.wine.data.source.local.WineLocalDataSource
 import com.margin.wine.data.source.remote.WineRemoteDataSource
 import com.margin.wine.domain.model.Wine
 import com.margin.wine.domain.repository.WineRepository
+import javax.inject.Inject
 
-class WineRepositoryImpl(
+class WineRepositoryImpl @Inject constructor(
     private val wineRemoteDataSource: WineRemoteDataSource,
     private val wineLocalDataSource: WineLocalDataSource
 ) : WineRepository {
