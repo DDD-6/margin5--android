@@ -20,3 +20,4 @@ include(":feature:splash")
 
 include(":core")
 include(":libraries:navigator")
+include(":feature:winenotewrite")
