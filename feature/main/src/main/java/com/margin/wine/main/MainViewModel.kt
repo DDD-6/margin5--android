@@ -1,26 +1,33 @@
 package com.margin.wine.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.margin.wine.core.arch.MviViewModel
 import com.margin.wine.domain.usecase.wine.FetchHomeWineListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val fetchHomeWineListUseCase: FetchHomeWineListUseCase
-): ViewModel() {
+): MviViewModel<MainContract.Event, MainContract.State, MainContract.Effect>() {
 
-    private val _wineCountLiveData = MutableLiveData<Int>()
-    val wineCountLiveData: LiveData<Int> get() = _wineCountLiveData
-
-    init {
-        viewModelScope.launch {
-            val count = (fetchHomeWineListUseCase.invoke().getOrNull() ?: listOf()).count()
-            _wineCountLiveData.postValue(count)
+    override fun createInitialState(): MainContract.State {
+        return MainContract.State(MainContract.MainDataState.Idle)
+    }
+    
+    override fun handleEvent(event: MainContract.Event) {
+        when(event) {
+            is MainContract.Event.OnCreateAndGetMainData -> getMainData()
         }
+    }
+    
+    private fun getMainData() = viewModelScope.launch {
+        setState { copy(mainDataState = MainContract.MainDataState.Loading) }
+        delay(2000L)
+        
+        val count = (fetchHomeWineListUseCase.invoke().getOrNull() ?: listOf()).count()
+        setState { copy(mainDataState = MainContract.MainDataState.Success(count)) }
     }
 }
