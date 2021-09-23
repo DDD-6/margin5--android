@@ -1,7 +1,8 @@
 import ProjectLibraries.core
-import ProjectLibraries.domain
 import ProjectLibraries.data
+import ProjectLibraries.domain
 import ProjectLibraries.local
+import ProjectLibraries.navigator
 import ProjectLibraries.remote
 
 plugins {
@@ -9,6 +10,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -48,12 +50,31 @@ dependencies {
     implementation(project(remote))
     implementation(project(local))
 
+    implementation(project(navigator))
+
     implementation(Dependencies.DI.hiltAndroid)
     kapt(Dependencies.DI.hiltCompiler)
 
     implementation(Dependencies.Coroutines.core)
 
+    implementation(project(Features.splash))
     implementation(project(Features.main))
+
+
+    val nav_version = "2.3.5"
+
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    // Feature module Support
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
+    // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:2.4.0-alpha08")
 
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.appcompat:appcompat:1.3.1")
