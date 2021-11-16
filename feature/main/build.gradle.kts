@@ -18,14 +18,16 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     
-    buildFeatures.viewBinding = true
-    
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+    
+    buildFeatures {
+        viewBinding = true
     }
 }
 
@@ -37,6 +39,8 @@ dependencies {
     kapt(Dependencies.DI.hiltCompiler)
 
     implementation(Dependencies.Coroutines.core)
+
+    kapt("org.xerial:sqlite-jdbc:3.34.0")
 
     val nav_version = "2.3.5"
 

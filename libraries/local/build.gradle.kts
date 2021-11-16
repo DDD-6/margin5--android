@@ -15,11 +15,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 
@@ -34,6 +34,7 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
 
     kapt("androidx.room:room-compiler:$room_version")
+    kapt("org.xerial:sqlite-jdbc:3.34.0")
 
     testImplementation("androidx.room:room-testing:$room_version") // optional - Test helpers)
 

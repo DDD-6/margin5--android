@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  >
+
+  <data>
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+      android:id="@+id/wine_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="21dp"
+      android:text="와인 정보"
+      android:textColor="#333333"
+      android:textSize="16sp"
+      app:layout_constraintStart_toStartOf="parent"
+      />
+
+    <View
+      android:id="@+id/divider_wine_1"
+      style="@style/DividerWineDetail"
+      android:layout_marginTop="10dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/wine_title"
+      />
+
+    <TextView
+      android:id="@+id/wine_name_head"
+      style="@style/TextWineDetailHead"
+      android:text="품명"
+      app:layout_constraintStart_toStartOf="@id/divider_wine_1"
+      app:layout_constraintTop_toTopOf="@id/divider_wine_1"
+      />
+
+    <TextView
+      android:id="@+id/wine_name_body"
+      style="@style/TextWineDetailBody"
+      app:layout_constraintBottom_toBottomOf="@id/wine_name_head"
+      app:layout_constraintEnd_toEndOf="@id/divider_wine_1"
+      app:layout_constraintTop_toTopOf="@id/wine_name_head"
+      tools:text="생 미셸 와인 에스테이트"
+      />
+
+    <View
+      android:id="@+id/divider_wine_2"
+      style="@style/DividerWineDetail"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/wine_name_head"
+      />
+
+    <TextView
+      android:id="@+id/wine_price_head"
+      style="@style/TextWineDetailHead"
+      android:text="가격"
+      app:layout_constraintStart_toStartOf="@id/divider_wine_2"
+      app:layout_constraintTop_toTopOf="@id/divider_wine_2"
+      />
+
+    <TextView
+      android:id="@+id/wine_price_body"
+      style="@style/TextWineDetailBody"
+      app:layout_constraintBottom_toBottomOf="@id/wine_price_head"
+      app:layout_constraintEnd_toEndOf="@id/divider_wine_2"
+      app:layout_constraintTop_toTopOf="@id/wine_price_head"
+      tools:text="120,000원"
+      />
+
+    <View
+      android:id="@+id/divider_wine_3"
+      style="@style/DividerWineDetail"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/wine_price_head"
+      />
+
+    <TextView
+      android:id="@+id/wine_type_head"
+      style="@style/TextWineDetailHead"
+      android:text="종류"
+      app:layout_constraintStart_toStartOf="@id/divider_wine_3"
+      app:layout_constraintTop_toTopOf="@id/divider_wine_3"
+      />
+
+    <TextView
+      android:id="@+id/wine_type_body"
+      style="@style/TextWineDetailBody"
+      app:layout_constraintBottom_toBottomOf="@id/wine_type_head"
+      app:layout_constraintEnd_toEndOf="@id/divider_wine_3"
+      app:layout_constraintTop_toTopOf="@id/wine_type_head"
+      tools:text="화이트"
+      />
+
+    <View
+      android:id="@+id/divider_wine_4"
+      style="@style/DividerWineDetail"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/wine_type_head"
+      />
+
+    <TextView
+      android:id="@+id/wine_country_head"
+      style="@style/TextWineDetailHead"
+      android:text="국가"
+      app:layout_constraintStart_toStartOf="@id/divider_wine_4"
+      app:layout_constraintTop_toTopOf="@id/divider_wine_4"
+      />
+
+    <TextView
+      android:id="@+id/wine_country_body"
+      style="@style/TextWineDetailBody"
+      app:layout_constraintBottom_toBottomOf="@id/wine_country_head"
+      app:layout_constraintEnd_toEndOf="@id/divider_wine_3"
+      app:layout_constraintTop_toTopOf="@id/wine_country_head"
+      tools:text="🇮🇹 이탈리아"
+      />
+
+    <View
+      android:id="@+id/divider_wine_5"
+      style="@style/DividerWineDetail"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/wine_country_head"
+      />
+
+    <TextView
+      android:id="@+id/wine_alcohol_content_head"
+      style="@style/TextWineDetailHead"
+      android:text="도수"
+      app:layout_constraintStart_toStartOf="@id/divider_wine_5"
+      app:layout_constraintTop_toTopOf="@id/divider_wine_5"
+      />
+
+    <TextView
+      android:id="@+id/wine_alcohol_content_body"
+      style="@style/TextWineDetailBody"
+      app:layout_constraintBottom_toBottomOf="@id/wine_alcohol_content_head"
+      app:layout_constraintEnd_toEndOf="@id/divider_wine_5"
+      app:layout_constraintTop_toTopOf="@id/wine_alcohol_content_head"
+      tools:text="11% 이하"
+      />
+
+    <View
+      android:id="@+id/divider_wine_6"
+      style="@style/DividerWineDetail"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/wine_alcohol_content_head"
+      />
+
+    <TextView
+      android:id="@+id/wine_taste_head"
+      style="@style/TextWineDetailHead"
+      android:text="맛"
+      app:layout_constraintStart_toStartOf="@id/divider_wine_6"
+      app:layout_constraintTop_toTopOf="@id/divider_wine_6"
+      />
+
+    <TextView
+      android:id="@+id/wine_body_head"
+      style="@style/TextWineDetailTasteHead"
+      android:layout_marginStart="44dp"
+      android:text="강도"
+      app:layout_constraintStart_toEndOf="@id/wine_taste_head"
+      app:layout_constraintEnd_toStartOf="@id/divider_between_body_sweet"
+      app:layout_constraintTop_toTopOf="@id/wine_taste_head"
+      />
+
+    <View
+      android:id="@+id/divider_between_body_sweet"
+      style="@style/TextWineDetailTasteDivider"
+      app:layout_constraintBottom_toBottomOf="@id/wine_body_head"
+      app:layout_constraintStart_toEndOf="@id/wine_body_head"
+      app:layout_constraintEnd_toStartOf="@id/wine_sweet_head"
+      app:layout_constraintTop_toTopOf="@id/wine_body_head"
+      />
+
+    <TextView
+      android:id="@+id/wine_sweet_head"
+      style="@style/TextWineDetailTasteHead"
+      android:text="당도"
+      app:layout_constraintEnd_toStartOf="@id/divider_between_sweet_acid"
+      app:layout_constraintStart_toEndOf="@id/divider_between_body_sweet"
+      app:layout_constraintTop_toTopOf="@id/wine_taste_head"
+      />
+
+    <View
+      android:id="@+id/divider_between_sweet_acid"
+      style="@style/TextWineDetailTasteDivider"
+      app:layout_constraintBottom_toBottomOf="@id/wine_sweet_head"
+      app:layout_constraintEnd_toStartOf="@id/wine_acid_head"
+      app:layout_constraintStart_toEndOf="@id/wine_sweet_head"
+      app:layout_constraintTop_toTopOf="@id/wine_sweet_head"
+      />
+
+    <TextView
+      android:id="@+id/wine_acid_head"
+      style="@style/TextWineDetailTasteHead"
+      android:layout_marginEnd="22dp"
+      android:text="산미"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/divider_between_sweet_acid"
+      app:layout_constraintTop_toTopOf="@id/wine_taste_head"
+      />
+
+    <TextView
+      android:id="@+id/wine_body_body"
+      style="@style/TextWineDetailTasteBody"
+      app:layout_constraintEnd_toEndOf="@id/wine_body_head"
+      app:layout_constraintStart_toStartOf="@id/wine_body_head"
+      app:layout_constraintTop_toBottomOf="@id/wine_body_head"
+      tools:text="7"
+      />
+
+    <TextView
+      android:id="@+id/wine_sweet_body"
+      style="@style/TextWineDetailTasteBody"
+      app:layout_constraintEnd_toEndOf="@id/wine_sweet_head"
+      app:layout_constraintStart_toStartOf="@id/wine_sweet_head"
+      app:layout_constraintTop_toBottomOf="@id/wine_sweet_head"
+      tools:text="4"
+      />
+
+    <TextView
+      android:id="@+id/wine_acid_body"
+      style="@style/TextWineDetailTasteBody"
+      app:layout_constraintEnd_toEndOf="@id/wine_acid_head"
+      app:layout_constraintStart_toStartOf="@id/wine_acid_head"
+      app:layout_constraintTop_toBottomOf="@id/wine_acid_head"
+      tools:text="4"
+      />
+
+
+    <View
+      android:id="@+id/divider_wine_7"
+      style="@style/DividerWineDetail"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/wine_body_body"
+      />
+
+    <TextView
+      android:id="@+id/wine_flavor_head"
+      style="@style/TextWineDetailHead"
+      android:text="향"
+      app:layout_constraintStart_toStartOf="@id/divider_wine_7"
+      app:layout_constraintTop_toTopOf="@id/divider_wine_7"
+      />
+
+    <TextView
+      android:id="@+id/wine_flavor_body"
+      style="@style/TextWineDetailBody"
+      app:layout_constraintBottom_toBottomOf="@id/wine_flavor_head"
+      app:layout_constraintEnd_toEndOf="@id/divider_wine_7"
+      app:layout_constraintTop_toTopOf="@id/wine_flavor_head"
+      tools:text="🍇 포도 / 🌲 우디향  /  🌰 견과류 "
+      />
+
+    <View
+      android:id="@+id/divider_wine_8"
+      style="@style/DividerWineDetail"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/wine_flavor_head"
+      />
+
+    <TextView
+      android:id="@+id/wine_rating_head"
+      style="@style/TextWineDetailHead"
+      android:text="평점"
+      app:layout_constraintStart_toStartOf="@id/divider_wine_8"
+      app:layout_constraintTop_toTopOf="@id/divider_wine_8"
+      />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

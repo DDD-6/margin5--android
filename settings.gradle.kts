@@ -20,4 +20,7 @@ include(":feature:splash")
 
 include(":core")
 include(":libraries:navigator")
-include(":feature:winenotewrite")
+include(":feature:write")
+include(":feature:sign")
+include(":feature:thumbnail")
+include(":feature:note:detail")

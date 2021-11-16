@@ -9,10 +9,8 @@ import dagger.hilt.components.SingletonComponent
 
 @InstallIn(SingletonComponent::class)
 @Module
-internal abstract class DataModule {
+abstract class DataModule {
 
     @Binds
-    abstract fun bindWineRepository(
-        repository: WineRepositoryImpl
-    ) : WineRepository
+    abstract fun bindWineRepository(repository: WineRepositoryImpl) : WineRepository
 }

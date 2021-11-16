@@ -20,6 +20,12 @@ class AppActivity : AppCompatActivity(), ToFlowNavigate {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /*setContent {
+            WineComposeTheme {
+                MainScreen()
+            }
+        }*/
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         navigator.navController = navHostFragment.navController
 
@@ -30,3 +36,43 @@ class AppActivity : AppCompatActivity(), ToFlowNavigate {
         navigator.navigateToFlow(flow)
     }
 }
+
+
+/*
+@Composable
+fun MainScreen() {
+    val navController = rememberNavController()
+    
+    Scaffold(
+        bottomBar = { BottomNavigationBar(navController) }
+    ) {
+        Navigation(navController = navController)
+    }
+}
+
+@Composable
+@Preview
+fun PreviewMainScreen() {
+    MainScreen()
+}
+
+@Composable
+fun Navigation(navController: NavHostController) {
+    NavHost(navController, startDestination = "home") {
+        composable("home") {
+            HomeScreen()
+        }
+        
+        composable("favorite") {
+            HomeScreen()
+        }
+        
+        composable("alarm") {
+            HomeScreen()
+        }
+        
+        composable("my") {
+            HomeScreen()
+        }
+    }
+}*/

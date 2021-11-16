@@ -5,42 +5,15 @@ import ProjectLibraries.local
 import ProjectLibraries.navigator
 import ProjectLibraries.remote
 
+//https://gist.github.com/f3401pal/8aa468192a4d35642e20abf9dbd8de4c
 plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
-}
-
-android {
-
-    compileSdk = AppConfig.COMPILE_SDK
-
-    defaultConfig {
-        applicationId = AppConfig.APPLICATION_ID
-        minSdk = AppConfig.MIN_SDK
-        targetSdk = AppConfig.TARGET_SDK
-        versionCode = AppConfig.VERSION_CODE
-        versionName = AppConfig.VERSION_NAME
-
-        //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+    id("com.google.gms.google-services")
+    //apply(from = "../android.gradle.kts")
 }
 
 dependencies {
@@ -59,6 +32,11 @@ dependencies {
 
     implementation(project(Features.splash))
     implementation(project(Features.main))
+    implementation(project(Features.main))
+
+    platform("com.google.firebase:firebase-bom:29.0.0")
+    
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
 
     //Room
     val room_version = "2.3.0"
@@ -79,8 +57,6 @@ dependencies {
     // Testing Navigation
     androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
 
-    // Jetpack Compose Integration
-    //implementation("androidx.navigation:navigation-compose:2.4.0-alpha08")
 
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.appcompat:appcompat:1.3.1")

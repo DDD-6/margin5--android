@@ -69,4 +69,5 @@ object ProjectLibraries {
 object Features {
     const val splash: String = ":feature:splash"
     const val main: String = ":feature:main"
+    const val thumbnail: String = ":feature:thumbnail"
 }

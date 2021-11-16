@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "441827058065",
+    "project_id": "wine-948db",
+    "storage_bucket": "wine-948db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441827058065:android:558e90ade54f2647e7ba30",
+        "android_client_info": {
+          "package_name": "com.margin.wine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441827058065-nvmod6ule6d2rg1nrgq7pi7bh07ua4gc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.margin.wine",
+            "certificate_hash": "cf726b81b9785850a4cf6c90a059f6013eedfc63"
+          }
+        },
+        {
+          "client_id": "441827058065-fcob3ijblm1il8kh9h951i2kl852g21r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKwc243h_1kfk5dhdn3UhZj31FX7agoXM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441827058065-fcob3ijblm1il8kh9h951i2kl852g21r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,8 @@
 <resources>
   <string name="app_name">Wine</string>
+
+  <string name="home">Home</string>
+  <string name="favorite">Favorite</string>
+  <string name="alarm">Alarm</string>
+  <string name="my">My</string>
 </resources>

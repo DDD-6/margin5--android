@@ -15,7 +15,10 @@ class WineRepositoryImpl @Inject constructor(
             Wine(
                 id = data.id,
                 name = data.name,
-                aid = ""
+                price = 10000,
+                type = "레드",
+                country = "Italy",
+                acid = ""
             )
         }
     }

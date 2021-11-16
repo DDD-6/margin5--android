@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  >
+
+  <data>
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+      android:id="@+id/title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
+      android:layout_marginStart="20dp"
+      android:textColor="#333333"
+      android:text="제목"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+      android:id="@+id/input"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginEnd="20dp"
+      android:background="null"
+      android:textSize="24sp"
+      app:layout_constraintTop_toBottomOf="@id/title"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      tools:hint="2020/11/01/월🍷"/>
+
+    <TextView
+      android:id="@+id/card"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="40dp"
+      android:text="카드"
+      android:textColor="#333333"
+      app:layout_constraintStart_toStartOf="@id/title"
+      app:layout_constraintTop_toBottomOf="@id/input"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/list_card"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="14dp"
+      android:paddingStart="20dp"
+      android:clipToPadding="false"
+      android:orientation="horizontal"
+      app:layout_constraintTop_toBottomOf="@id/card"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      tools:listitem="@layout/item_input_card"/>
+
+    <TextView
+      android:id="@+id/photo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="40dp"
+      android:text="사진"
+      android:textColor="#333333"
+      app:layout_constraintStart_toStartOf="@id/title"
+      app:layout_constraintTop_toBottomOf="@id/list_card"/>
+
+    <FrameLayout
+      android:id="@+id/photo_insert"
+      android:layout_width="80dp"
+      android:layout_height="80dp"
+      android:layout_marginTop="14dp"
+      android:background="#f5f5f5"
+      app:layout_constraintStart_toStartOf="@id/title"
+      app:layout_constraintTop_toBottomOf="@id/photo">
+      <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_plus"
+        android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <TextView
+      android:id="@+id/note"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="40dp"
+      android:text="노트"
+      android:textColor="#333333"
+      app:layout_constraintStart_toStartOf="@id/title"
+      app:layout_constraintTop_toBottomOf="@id/photo_insert"/>
+
+    <EditText
+      android:id="@+id/input_note"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="20dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@id/title"
+      app:layout_constraintTop_toBottomOf="@id/note"/>
+
+    <TextView
+      android:id="@+id/tag"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="40dp"
+      android:text="태그"
+      android:textColor="#333333"
+      app:layout_constraintStart_toStartOf="@id/title"
+      app:layout_constraintTop_toBottomOf="@id/input_note"/>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
