@@ -17,7 +17,7 @@ if (hasLibraryPlugin || hasApplicationPlugin) {
         }
 
         buildFeatures {
-            dataBinding = true
+            viewBinding = true
         }
 
         compileOptions {

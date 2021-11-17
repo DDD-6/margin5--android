@@ -12,6 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.margin.wine.main.databinding.FragmentMainBinding
+import com.margin.wine.thumbnail.ThumbnailListAdapter
+import com.margin.wine.thumbnail.ThumbnailViewState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -55,6 +57,8 @@ class MainFragment : Fragment() {
                 is MainContract.MainDataState.Success -> {
                     binding.mainProgress.isVisible = false
                     binding.wineCount.text = state.count.toString()
+
+                    binding.mainListView.adapter = ThumbnailListAdapter(ThumbnailViewState.mock())
                 }
             }
         }

@@ -3,6 +3,7 @@ package com.margin.wine.thumbnail
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.margin.wine.thumbnail.databinding.ItemThumbnailBinding
 
 class ThumbnailListAdapter(
@@ -22,7 +23,8 @@ class ThumbnailListAdapter(
     class ThumbnailViewHolder(private val binding: ItemThumbnailBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(viewState: ThumbnailViewState) {
-            binding.viewState = viewState
+            binding.text.text = viewState.title
+            binding.date.text = viewState.date
         }
     }
 }

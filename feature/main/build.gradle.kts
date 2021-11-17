@@ -35,6 +35,8 @@ dependencies {
     implementation(project(core))
     implementation(project(domain))
 
+    implementation(project(Features.thumbnail))
+
     implementation(Dependencies.DI.hiltAndroid)
     kapt(Dependencies.DI.hiltCompiler)
 

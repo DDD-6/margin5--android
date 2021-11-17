@@ -1,0 +1,60 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  >
+
+  <TextView
+    android:id="@+id/title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#333333"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:text="달달구리 최고봉 "/>
+
+  <TextView
+    android:id="@+id/sub_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:textSize="12sp"
+    android:textColor="#333333"
+    app:layout_constraintTop_toBottomOf="@id/title"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:text="샤또 롱보, 리브잘트 앙브레"/>
+
+  <androidx.constraintlayout.utils.widget.ImageFilterView
+    android:id="@+id/wine_img"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="36dp"
+    android:src="@drawable/wine_sample_1"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/sub_title"/>
+
+  <TextView
+    android:id="@+id/wine_info"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/sub_title"
+    tools:text="프랑스 /  랑그독 루씨용 / 주정강화"/>
+
+  <TextView
+    android:id="@+id/wine_sub_info"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/wine_info"
+    tools:text="16% / 500ml / 69,000원"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
