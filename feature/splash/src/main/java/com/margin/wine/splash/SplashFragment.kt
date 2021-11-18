@@ -24,13 +24,9 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
-        view.findViewById<Button>(R.id.move_to_main).setOnClickListener {
-            (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.WineFlow)
-        }
-    }
-    
-    private fun FragmentSplashBinding.initRecyclerView() {
-        moveToMain.text = "asdf"
+
+        binding.root.postDelayed({
+            (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.Sign)
+        }, 1000L)
     }
 }

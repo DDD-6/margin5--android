@@ -32,7 +32,7 @@ dependencies {
 
     implementation(project(Features.splash))
     implementation(project(Features.main))
-    implementation(project(Features.main))
+    implementation(project(Features.sign))
 
     platform("com.google.firebase:firebase-bom:29.0.0")
     

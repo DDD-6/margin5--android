@@ -22,7 +22,18 @@
       app:popUpToInclusive="true"
       app:popUpTo="@+id/mainFragment"
       app:destination="@id/main_navigation" />
+
+    <action
+      android:id="@+id/action_splashFragment_to_signFragment"
+      app:enterAnim="@anim/slide_in_left"
+      app:exitAnim="@anim/fade_out"
+      app:popEnterAnim="@anim/fade_in"
+      app:popExitAnim="@anim/slide_in_right"
+      app:popUpToInclusive="true"
+      app:popUpTo="@+id/signFragment"
+      app:destination="@id/sign_navigation" />
   </fragment>
 
   <include app:graph="@navigation/main_navigation"/>
+  <include app:graph="@navigation/sign_navigation"/>
 </navigation>

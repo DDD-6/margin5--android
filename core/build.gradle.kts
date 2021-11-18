@@ -2,6 +2,7 @@ import ProjectLibraries.data
 import ProjectLibraries.domain
 import ProjectLibraries.local
 import ProjectLibraries.remote
+import ProjectLibraries.core
 
 plugins {
     id("com.android.library")

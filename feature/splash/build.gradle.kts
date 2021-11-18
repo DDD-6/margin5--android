@@ -1,4 +1,5 @@
 import ProjectLibraries.navigator
+import ProjectLibraries.core
 
 plugins {
     id("com.android.library")
@@ -26,6 +27,7 @@ android {
 
 dependencies {
     implementation(project(navigator))
+    implementation(project(core))
 
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.fragment:fragment-ktx:1.3.6")

@@ -35,14 +35,9 @@
     app:layout_constraintTop_toBottomOf="@id/bg_top"
     />
 
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/sign_privacy"
-    android:textSize="10sp"
-    />
 
-  <Button
+
+  <!--<Button
     style="?android:attr/borderlessButtonStyle"
     android:layout_width="160dp"
     android:layout_height="48dp"
@@ -64,5 +59,32 @@
     android:gravity="center_vertical"
     android:paddingStart="40dp"
     android:text="로그인"
+    />-->
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginBottom="16dp"
+    android:text="@string/sign_privacy"
+    android:textSize="10sp"
+    app:layout_constraintBottom_toTopOf="@id/sign_in"
+    app:layout_constraintStart_toStartOf="parent"
     />
+
+  <TextView
+    android:id="@+id/sign_in"
+    style="?android:attr/borderlessButtonStyle"
+    android:layout_width="160dp"
+    android:layout_height="48dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="34dp"
+    android:background="@drawable/bg_sign_in"
+    android:drawableStart="@drawable/ic_google"
+    android:drawablePadding="10dp"
+    android:gravity="center_vertical"
+    android:paddingStart="40dp"
+    android:text="로그인"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

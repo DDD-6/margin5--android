@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/sign_navigation"
+  app:startDestination="@id/signFragment">
+
+  <fragment
+    android:id="@+id/signFragment"
+    android:name="com.margin.wine.sign.SignFragment"
+    android:label="MainFragment"
+    tools:layout="@layout/fragment_sign">
+
+    <argument
+      android:name="eventId"
+      android:defaultValue="0"
+      app:argType="integer"/>
+    <action
+      android:id="@+id/action_signFragment_to_signStepOneFragment"
+      app:enterAnim="@anim/slide_in_left"
+      app:exitAnim="@anim/fade_out"
+      app:popEnterAnim="@anim/fade_in"
+      app:popExitAnim="@anim/slide_in_right"
+      app:popUpToInclusive="true"
+      app:destination="@id/signStepOneFragment" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/signStepOneFragment"
+    android:name="com.margin.wine.sign.step.one.SignStepOneFragment"
+    android:label="SignStepOneFragment"
+    tools:layout="@layout/fragment_sign_step_one">
+    <action
+      android:id="@+id/action_signStepOneFragment_to_signStepTwoFragment"
+      app:destination="@id/signStepTwoFragment" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/signStepTwoFragment"
+    android:name="com.margin.wine.sign.step.two.SignStepTwoFragment"
+    android:label="SignStepTwoFragment"
+    tools:layout="@layout/fragment_sign_step_two">
+  </fragment>
+
+</navigation>
