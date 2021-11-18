@@ -13,7 +13,9 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.margin.wine.sign.SignContract
+import com.margin.wine.sign.SignFragmentDirections
 import com.margin.wine.sign.databinding.FragmentSignStepOneBinding
 import kotlinx.coroutines.flow.collect
 
@@ -64,7 +66,7 @@ class SignStepOneFragment : Fragment() {
 
     private fun Button.initBottomBtn() {
         setOnClickListener {
-
+            findNavController().navigate(SignStepOneFragmentDirections.actionSignStepOneFragmentToSignStepTwoFragment())
         }
     }
 

@@ -33,6 +33,10 @@
     tools:layout="@layout/fragment_sign_step_one">
     <action
       android:id="@+id/action_signStepOneFragment_to_signStepTwoFragment"
+      app:enterAnim="@anim/slide_in_left"
+      app:exitAnim="@anim/fade_out"
+      app:popEnterAnim="@anim/fade_in"
+      app:popExitAnim="@anim/slide_in_right"
       app:destination="@id/signStepTwoFragment" />
   </fragment>
 
@@ -41,6 +45,20 @@
     android:name="com.margin.wine.sign.step.two.SignStepTwoFragment"
     android:label="SignStepTwoFragment"
     tools:layout="@layout/fragment_sign_step_two">
+    <action
+      android:id="@+id/action_signStepTwoFragment_to_signFinishFragment"
+      app:enterAnim="@anim/slide_in_left"
+      app:exitAnim="@anim/fade_out"
+      app:popEnterAnim="@anim/fade_in"
+      app:popExitAnim="@anim/slide_in_right"
+      app:destination="@id/signFinishFragment" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/signFinishFragment"
+    android:name="com.margin.wine.sign.step.finish.SignFinishFragment"
+    android:label="SignStepTwoFragment"
+    tools:layout="@layout/fragment_sign_finish">
   </fragment>
 
 </navigation>

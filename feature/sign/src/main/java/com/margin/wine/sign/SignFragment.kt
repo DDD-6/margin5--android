@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.margin.wine.navigator.NavigationFlow
-import com.margin.wine.navigator.ToFlowNavigate
 import com.margin.wine.sign.databinding.FragmentSignBinding
 import kotlinx.coroutines.flow.collect
 

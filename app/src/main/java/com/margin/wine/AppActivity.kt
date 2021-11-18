@@ -3,6 +3,7 @@ package com.margin.wine
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.margin.wine.navigator.NavigationFlow
 import com.margin.wine.navigator.Navigator
@@ -16,6 +17,8 @@ class AppActivity : AppCompatActivity(), ToFlowNavigate {
 
     private val navigator by lazy { Navigator() }
 
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,12 +31,21 @@ class AppActivity : AppCompatActivity(), ToFlowNavigate {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         navigator.navController = navHostFragment.navController
+        navController = navHostFragment.navController
 
         navHostFragment.navController.currentDestination
     }
 
     override fun navigateToFlow(flow: NavigationFlow) {
         navigator.navigateToFlow(flow)
+    }
+
+    override fun onBackPressed() {
+        if (!navController.popBackStack()) {
+            super.onBackPressed()
+        } else {
+            navController.navigateUp()
+        }
     }
 }
 
