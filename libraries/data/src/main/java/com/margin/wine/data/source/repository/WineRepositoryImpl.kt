@@ -15,10 +15,14 @@ class WineRepositoryImpl @Inject constructor(
             Wine(
                 id = data.id,
                 name = data.name,
+                nameEng = "Es Cuiko Oaked Chardonnay",
+                vintage = 2021,
                 price = 10000,
                 type = "레드",
                 country = "Italy",
-                acid = ""
+                region = "쿠리코 밸리",
+                alcoholContent = 17.5f,
+                ml = 750,
             )
         }
     }

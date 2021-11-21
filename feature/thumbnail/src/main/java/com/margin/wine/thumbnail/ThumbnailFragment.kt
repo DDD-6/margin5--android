@@ -22,4 +22,14 @@ class ThumbnailFragment : Fragment() {
 
         binding.thumbnailList.adapter = ThumbnailListAdapter(ThumbnailViewState.mock())
     }
+
+    companion object {
+        fun newInstance(): ThumbnailFragment{
+            val args = Bundle()
+
+            val fragment = ThumbnailFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
 }

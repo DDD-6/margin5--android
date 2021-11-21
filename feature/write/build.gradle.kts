@@ -9,23 +9,6 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
-android {
-    compileSdk = AppConfig.COMPILE_SDK
-
-    defaultConfig {
-        minSdk = AppConfig.MIN_SDK
-        targetSdk = AppConfig.TARGET_SDK
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
-}
-
 dependencies {
     implementation(project(core))
     implementation(project(domain))

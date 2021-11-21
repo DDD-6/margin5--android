@@ -71,4 +71,6 @@ object Features {
     const val sign = ":feature:sign"
     const val main = ":feature:main"
     const val thumbnail = ":feature:thumbnail"
+    const val write = ":feature:write"
+    const val wine = ":feature:wine"
 }

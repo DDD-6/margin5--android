@@ -12,6 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.margin.wine.main.databinding.FragmentMainBinding
+import com.margin.wine.navigator.NavigationFlow
+import com.margin.wine.navigator.ToFlowNavigate
 import com.margin.wine.thumbnail.ThumbnailListAdapter
 import com.margin.wine.thumbnail.ThumbnailViewState
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,9 +22,8 @@ import kotlinx.coroutines.flow.collect
 @AndroidEntryPoint
 class MainFragment : Fragment() {
 
-    private val mainViewModel by viewModels<MainViewModel>()
     private val args by navArgs<MainFragmentArgs>()
-    
+    private val mainViewModel by viewModels<MainViewModel>()
     private val binding by lazy { FragmentMainBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
@@ -47,18 +48,22 @@ class MainFragment : Fragment() {
         effects()
     
         mainViewModel.setEvent(MainContract.Event.OnCreateAndGetMainData)
+
+        binding.pager.adapter = MainPagerAdapter(this)
+        binding.write.setOnClickListener {
+            (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.WriteNote)
+        }
     }
     
     private fun render() = lifecycleScope.launchWhenStarted {
         mainViewModel.uiState.collect {
             when(val state = it.mainDataState) {
-                is MainContract.MainDataState.Idle -> binding.mainProgress.isVisible = false
-                is MainContract.MainDataState.Loading -> binding.mainProgress.isVisible = true
+                is MainContract.MainDataState.Idle -> {} //binding.mainProgress.isVisible = false
+                is MainContract.MainDataState.Loading -> {} //binding.mainProgress.isVisible = true
                 is MainContract.MainDataState.Success -> {
-                    binding.mainProgress.isVisible = false
-                    binding.wineCount.text = state.count.toString()
-
-                    binding.mainListView.adapter = ThumbnailListAdapter(ThumbnailViewState.mock())
+                    //binding.mainProgress.isVisible = false
+                    //binding.wineCount.text = state.count.toString()
+                    //binding.mainListView.adapter = ThumbnailListAdapter(ThumbnailViewState.mock())
                 }
             }
         }
@@ -68,7 +73,7 @@ class MainFragment : Fragment() {
         mainViewModel.effect.collect { effect ->
             when(effect) {
                 is MainContract.Effect.ShowToast -> {
-                    binding.mainProgress.isVisible = false
+                    //binding.mainProgress.isVisible = false
                     Toast.makeText(requireContext(), "Wine", Toast.LENGTH_SHORT).show()
                 }
             }

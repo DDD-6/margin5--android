@@ -15,6 +15,7 @@
     android:id="@+id/circle_head"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:background="@drawable/bg_today_knowledge"
     android:text="오늘의\n지식"
     android:textColor="@android:color/white"
@@ -38,6 +39,7 @@
     />
 
   <TextView
+    android:id="@+id/desc"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="42dp"

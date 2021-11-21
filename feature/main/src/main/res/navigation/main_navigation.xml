@@ -16,6 +16,17 @@
       android:name="eventId"
       android:defaultValue="0"
       app:argType="integer"/>
+
+    <action
+      android:id="@+id/action_mainFragment_to_writeFragment"
+      app:enterAnim="@anim/slide_in_left"
+      app:exitAnim="@anim/fade_out"
+      app:popEnterAnim="@anim/fade_in"
+      app:popExitAnim="@anim/slide_in_right"
+      app:popUpToInclusive="true"
+      app:popUpTo="@+id/writeFragment"
+      app:destination="@id/write_navigation" />
   </fragment>
 
+  <include app:graph="@navigation/write_navigation" />
 </navigation>

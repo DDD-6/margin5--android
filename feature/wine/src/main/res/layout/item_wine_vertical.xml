@@ -3,58 +3,91 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
+  android:layout_height="wrap_content"
   >
 
   <TextView
     android:id="@+id/title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
     android:textColor="#333333"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    tools:text="달달구리 최고봉 "/>
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="달달구리 최고봉 "
+    />
 
   <TextView
     android:id="@+id/sub_title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="12dp"
-    android:textSize="12sp"
     android:textColor="#333333"
-    app:layout_constraintTop_toBottomOf="@id/title"
-    app:layout_constraintStart_toStartOf="parent"
+    android:textSize="12sp"
     app:layout_constraintEnd_toEndOf="parent"
-    tools:text="샤또 롱보, 리브잘트 앙브레"/>
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/title"
+    tools:text="샤또 롱보, 리브잘트 앙브레"
+    />
 
-  <androidx.constraintlayout.utils.widget.ImageFilterView
+  <ImageView
     android:id="@+id/wine_img"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="36dp"
     android:src="@drawable/wine_sample_1"
-    app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/sub_title"/>
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/sub_title"
+    />
 
   <TextView
     android:id="@+id/wine_info"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
+    android:layout_marginTop="24dp"
+    android:textColor="#333333"
+    android:textSize="12sp"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/sub_title"
-    tools:text="프랑스 /  랑그독 루씨용 / 주정강화"/>
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/wine_img"
+    tools:text="프랑스 /  랑그독 루씨용 / 주정강화"
+    />
 
   <TextView
     android:id="@+id/wine_sub_info"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
+    android:layout_marginTop="8dp"
+    android:textColor="#333333"
+    android:textSize="12sp"
     app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/wine_info"
-    tools:text="16% / 500ml / 69,000원"/>
+    tools:text="16% / 500ml / 69,000원"
+    />
 
 
+  <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toStartOf="@id/favorite"
+    app:layout_constraintTop_toTopOf="@id/favorite"
+    app:layout_constraintBottom_toBottomOf="@id/favorite"
+    android:padding="6dp"
+    android:src="@drawable/ic_share"/>
+
+  <ImageView
+    android:id="@+id/favorite"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:padding="6dp"
+    android:layout_marginEnd="6dp"
+    android:layout_marginBottom="6dp"
+    android:src="@drawable/ic_favorite"
+    app:layout_constraintTop_toBottomOf="@id/wine_sub_info"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,4 +5,6 @@ sealed class NavigationFlow {
 
     object Sign : NavigationFlow()
     object SignStepOne : NavigationFlow()
+
+    object WriteNote : NavigationFlow()
 }

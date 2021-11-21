@@ -1,5 +1,6 @@
 import ProjectLibraries.core
 import ProjectLibraries.domain
+import ProjectLibraries.navigator
 
 plugins {
     id("com.android.library")
@@ -34,8 +35,11 @@ android {
 dependencies {
     implementation(project(core))
     implementation(project(domain))
+    implementation(project(navigator))
 
     implementation(project(Features.thumbnail))
+    implementation(project(Features.write))
+    implementation(project(Features.wine))
 
     implementation(Dependencies.DI.hiltAndroid)
     kapt(Dependencies.DI.hiltCompiler)

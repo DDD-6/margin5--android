@@ -8,7 +8,7 @@ class SquareConstraintLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         setMeasuredDimension(measuredWidth, measuredWidth)
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 }
