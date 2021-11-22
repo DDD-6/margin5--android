@@ -7,4 +7,6 @@ sealed class NavigationFlow {
     object SignStepOne : NavigationFlow()
 
     object WriteNote : NavigationFlow()
+
+    data class NoteDetail(val id: Int) : NavigationFlow()
 }

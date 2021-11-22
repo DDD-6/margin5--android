@@ -15,18 +15,25 @@
     <argument
       android:name="eventId"
       android:defaultValue="0"
-      app:argType="integer"/>
+      app:argType="integer" />
 
     <action
       android:id="@+id/action_mainFragment_to_writeFragment"
+      app:destination="@id/write_navigation"
       app:enterAnim="@anim/slide_in_left"
       app:exitAnim="@anim/fade_out"
       app:popEnterAnim="@anim/fade_in"
-      app:popExitAnim="@anim/slide_in_right"
-      app:popUpToInclusive="true"
-      app:popUpTo="@+id/writeFragment"
-      app:destination="@id/write_navigation" />
+      app:popExitAnim="@anim/slide_in_right" />
+    <action
+      android:id="@+id/action_mainFragment_to_noteDetailFragment"
+      app:destination="@id/noteDetailFragment" />
   </fragment>
+
+  <fragment
+    android:id="@+id/noteDetailFragment"
+    android:name="com.margin.wine.note.detail.NoteDetailFragment"
+    android:label="MainFragment"
+    tools:layout="@layout/fragment_note_detail" />
 
   <include app:graph="@navigation/write_navigation" />
 </navigation>

@@ -34,6 +34,8 @@ dependencies {
     implementation(project(Features.main))
     implementation(project(Features.sign))
 
+    implementation(project(Features.detail))
+
     platform("com.google.firebase:firebase-bom:29.0.0")
     
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")

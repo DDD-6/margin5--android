@@ -18,11 +18,11 @@
             <option value="$PROJECT_DIR$/feature/main" />
             <option value="$PROJECT_DIR$/feature/note" />
             <option value="$PROJECT_DIR$/feature/note/detail" />
+            <option value="$PROJECT_DIR$/feature/note/write" />
             <option value="$PROJECT_DIR$/feature/sign" />
             <option value="$PROJECT_DIR$/feature/splash" />
             <option value="$PROJECT_DIR$/feature/thumbnail" />
             <option value="$PROJECT_DIR$/feature/wine" />
-            <option value="$PROJECT_DIR$/feature/write" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/data" />
             <option value="$PROJECT_DIR$/libraries/domain" />

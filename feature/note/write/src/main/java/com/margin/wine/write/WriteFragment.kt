@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.margin.wine.write.card.WineCardSelect
+import com.margin.wine.write.card.WineCardSelectAdapter
 import com.margin.wine.write.databinding.FragmentWriteBinding
 
 class WriteFragment : Fragment() {
@@ -20,5 +22,11 @@ class WriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.listCard.adapter = WineCardSelectAdapter().apply {
+            submitList(listOf(
+                WineCardSelect(R.drawable.ic_couple_2)
+            ))
+        }
     }
 }

@@ -40,6 +40,7 @@ dependencies {
     implementation(project(Features.thumbnail))
     implementation(project(Features.write))
     implementation(project(Features.wine))
+    implementation(project(Features.detail))
 
     implementation(Dependencies.DI.hiltAndroid)
     kapt(Dependencies.DI.hiltCompiler)

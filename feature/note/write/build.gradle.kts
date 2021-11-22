@@ -5,16 +5,12 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
-    id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
 }
 
 dependencies {
     implementation(project(core))
     implementation(project(domain))
-
-    implementation(Dependencies.DI.hiltAndroid)
-    kapt(Dependencies.DI.hiltCompiler)
 
     implementation(Dependencies.Coroutines.core)
 

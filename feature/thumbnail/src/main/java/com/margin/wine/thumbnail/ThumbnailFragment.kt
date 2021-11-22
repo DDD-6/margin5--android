@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.margin.wine.navigator.NavigationFlow
+import com.margin.wine.navigator.ToFlowNavigate
 import com.margin.wine.thumbnail.databinding.FragmentThumbnailBinding
 
 class ThumbnailFragment : Fragment() {
@@ -20,7 +22,9 @@ class ThumbnailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.thumbnailList.adapter = ThumbnailListAdapter(ThumbnailViewState.mock())
+        binding.thumbnailList.adapter = ThumbnailListAdapter(ThumbnailViewState.mock()) { id ->
+            (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.NoteDetail(id))
+        }
     }
 
     companion object {

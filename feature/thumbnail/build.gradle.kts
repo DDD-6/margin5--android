@@ -1,9 +1,12 @@
+import ProjectLibraries.navigator
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 dependencies {
+    implementation(project(navigator))
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.3.1")
