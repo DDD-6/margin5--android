@@ -11,7 +11,7 @@ class Navigator {
         is NavigationFlow.WineFlow -> navController.navigate(SplashFragmentDirections.actionSplashFragmentToMainFragment())
         is NavigationFlow.Sign -> navController.navigate(SplashFragmentDirections.actionSplashFragmentToSignFragment())
         is NavigationFlow.SignStepOne -> navController.navigate(SplashFragmentDirections.actionSplashFragmentToSignFragment())
-        is NavigationFlow.WriteNote -> navController.navigate(MainFragmentDirections.actionMainFragmentToWriteFragment())
+        is NavigationFlow.WriteNote -> navController.navigate(MainFragmentDirections.actionMainFragmentToNoteWriteFragment())
         is NavigationFlow.NoteDetail -> navController.navigate(MainFragmentDirections.actionMainFragmentToNoteDetailFragment())
     }
 }

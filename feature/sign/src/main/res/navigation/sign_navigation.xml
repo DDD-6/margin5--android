@@ -22,7 +22,6 @@
       app:exitAnim="@anim/fade_out"
       app:popEnterAnim="@anim/fade_in"
       app:popExitAnim="@anim/slide_in_right"
-      app:popUpToInclusive="true"
       app:destination="@id/signStepOneFragment" />
   </fragment>
 

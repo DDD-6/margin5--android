@@ -19,7 +19,8 @@
       app:exitAnim="@anim/fade_out"
       app:popEnterAnim="@anim/fade_in"
       app:popExitAnim="@anim/slide_in_right"
-      app:destination="@id/main_navigation" />
+      app:destination="@id/main_navigation"
+      app:popUpToInclusive="true"/>
 
     <action
       android:id="@+id/action_splashFragment_to_signFragment"
@@ -27,7 +28,8 @@
       app:exitAnim="@anim/fade_out"
       app:popEnterAnim="@anim/fade_in"
       app:popExitAnim="@anim/slide_in_right"
-      app:destination="@id/sign_navigation" />
+      app:destination="@id/sign_navigation"
+      app:popUpToInclusive="true"/>
   </fragment>
 
   <include app:graph="@navigation/main_navigation" />

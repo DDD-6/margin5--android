@@ -19,7 +19,6 @@ import kotlinx.coroutines.flow.collect
 @AndroidEntryPoint
 class MainFragment : Fragment() {
 
-    private val args by navArgs<MainFragmentArgs>()
     private val mainViewModel by viewModels<MainViewModel>()
     private val binding by lazy { FragmentMainBinding.inflate(layoutInflater) }
 
@@ -35,21 +34,27 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //args.eventId.toString()
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
+        /*requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 requireActivity().finish()
             }
-        })
+        })*/
         
         render()
         effects()
     
         mainViewModel.setEvent(MainContract.Event.OnCreateAndGetMainData)
 
-        binding.pager.adapter = MainPagerAdapter(this)
+        initPager()
+
         binding.write.setOnClickListener {
             (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.WriteNote)
         }
+    }
+
+    private fun initPager() = with(binding.pager){
+        adapter = MainPagerAdapter(requireActivity())
+        isSaveEnabled = false
     }
     
     private fun render() = lifecycleScope.launchWhenStarted {

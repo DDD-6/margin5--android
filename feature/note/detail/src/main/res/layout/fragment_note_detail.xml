@@ -9,7 +9,7 @@
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:layout_marginTop="-400dp"
+    android:paddingBottom="100dp"
     android:paddingStart="20dp"
     android:paddingTop="42dp"
     android:paddingEnd="20dp"
@@ -47,7 +47,7 @@
       app:layout_constraintTop_toBottomOf="@id/date"
       />
 
-    <EditText
+    <TextView
       android:id="@+id/input_text"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -331,6 +331,63 @@
       app:layout_constraintStart_toStartOf="@id/divider_wine_8"
       app:layout_constraintTop_toTopOf="@id/divider_wine_8"
       />
+
+    <ImageView
+      android:id="@+id/rating_1"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:layout_marginStart="12dp"
+      android:layout_marginEnd="14dp"
+      android:src="@drawable/ic_favorite_off"
+      app:layout_constraintBottom_toBottomOf="@id/wine_rating_head"
+      app:layout_constraintEnd_toStartOf="@id/rating_2"
+      app:layout_constraintHorizontal_chainStyle="spread"
+      app:layout_constraintTop_toTopOf="@id/wine_rating_head"
+      />
+
+    <ImageView
+      android:id="@+id/rating_2"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:layout_marginEnd="14dp"
+      android:src="@drawable/ic_favorite_off"
+      app:layout_constraintBottom_toBottomOf="@id/wine_rating_head"
+      app:layout_constraintEnd_toStartOf="@id/rating_3"
+      app:layout_constraintTop_toTopOf="@id/wine_rating_head"
+      />
+
+    <ImageView
+      android:id="@+id/rating_3"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:layout_marginEnd="14dp"
+      android:src="@drawable/ic_favorite_off"
+      app:layout_constraintBottom_toBottomOf="@id/wine_rating_head"
+      app:layout_constraintEnd_toStartOf="@id/rating_4"
+      app:layout_constraintTop_toTopOf="@id/wine_rating_head"
+      />
+
+    <ImageView
+      android:id="@+id/rating_4"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:layout_marginEnd="14dp"
+      android:src="@drawable/ic_favorite_off"
+      app:layout_constraintBottom_toBottomOf="@id/wine_rating_head"
+      app:layout_constraintEnd_toStartOf="@id/rating_5"
+      app:layout_constraintTop_toTopOf="@id/wine_rating_head"
+      />
+
+    <ImageView
+      android:id="@+id/rating_5"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:src="@drawable/ic_favorite_off"
+      app:layout_constraintBottom_toBottomOf="@id/wine_rating_head"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@id/wine_rating_head"
+      />
+
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

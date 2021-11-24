@@ -12,28 +12,31 @@
     android:label="MainFragment"
     tools:layout="@layout/fragment_main">
 
-    <argument
-      android:name="eventId"
-      android:defaultValue="0"
-      app:argType="integer" />
-
     <action
-      android:id="@+id/action_mainFragment_to_writeFragment"
-      app:destination="@id/write_navigation"
+      android:id="@+id/action_mainFragment_to_noteDetailFragment"
+      app:destination="@id/noteDetailFragment"
       app:enterAnim="@anim/slide_in_left"
       app:exitAnim="@anim/fade_out"
       app:popEnterAnim="@anim/fade_in"
       app:popExitAnim="@anim/slide_in_right" />
     <action
-      android:id="@+id/action_mainFragment_to_noteDetailFragment"
-      app:destination="@id/noteDetailFragment" />
+      android:id="@+id/action_mainFragment_to_noteWriteFragment"
+      app:destination="@id/noteWriteFragment"
+      app:enterAnim="@anim/slide_in_left"
+      app:exitAnim="@anim/fade_out"
+      app:popEnterAnim="@anim/fade_in"
+      app:popExitAnim="@anim/slide_in_right" />
   </fragment>
 
   <fragment
     android:id="@+id/noteDetailFragment"
     android:name="com.margin.wine.note.detail.NoteDetailFragment"
-    android:label="MainFragment"
+    android:label="NoteDetailFragment"
     tools:layout="@layout/fragment_note_detail" />
 
-  <include app:graph="@navigation/write_navigation" />
+  <fragment
+    android:id="@+id/noteWriteFragment"
+    android:name="com.margin.wine.write.NoteWriteFragment"
+    android:label="NoteWriteFragment"
+    tools:layout="@layout/fragment_note_write" />
 </navigation>

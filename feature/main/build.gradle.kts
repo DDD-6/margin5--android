@@ -38,8 +38,10 @@ dependencies {
     implementation(project(navigator))
 
     implementation(project(Features.thumbnail))
-    implementation(project(Features.write))
+
     implementation(project(Features.wine))
+
+    implementation(project(Features.write))
     implementation(project(Features.detail))
 
     implementation(Dependencies.DI.hiltAndroid)

@@ -1,8 +1,12 @@
 package com.margin.wine.thumbnail
 
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ImageSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.margin.wine.thumbnail.databinding.ItemThumbnailBinding
 import com.margin.wine.thumbnail.databinding.ItemThumbnailCardBinding
@@ -86,13 +90,30 @@ class ThumbnailListAdapter(
         }
 
         fun bind(viewState: ThumbnailViewState) {
+
             id = viewState.id
             binding.wineName.text = viewState.wineName
             binding.wineType.text = viewState.wineType
-            binding.text.text = viewState.title
+
+            binding.title.text = viewState.title
             binding.date.text = viewState.date
+            binding.inputText.text = viewState.note
+
+            //spannableText(viewState)
+        }
+
+        private fun spannableText(viewState: ThumbnailViewState) {
+            val text = "사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 사진 없이 글로 적는"
+            val context = binding.root.context
+            val image = ContextCompat.getDrawable(context, R.drawable.ic_man)!!
+            image.setBounds(0, 0, image.intrinsicWidth, image.intrinsicHeight)
+
+            val sb = SpannableString(text)
+            val imageSpan = ImageSpan(image, ImageSpan.ALIGN_BOTTOM)
+
+            sb.setSpan(imageSpan, text.length - 150, text.length -149, Spanned.SPAN_INCLUSIVE_INCLUSIVE)
+
+            binding.inputText.text = sb
         }
     }
-
-
 }

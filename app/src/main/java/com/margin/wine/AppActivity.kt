@@ -23,30 +23,22 @@ class AppActivity : AppCompatActivity(), ToFlowNavigate {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*setContent {
-            WineComposeTheme {
-                MainScreen()
-            }
-        }*/
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         navigator.navController = navHostFragment.navController
         navController = navHostFragment.navController
-
-        navHostFragment.navController.currentDestination
     }
 
     override fun navigateToFlow(flow: NavigationFlow) {
         navigator.navigateToFlow(flow)
     }
 
-    override fun onBackPressed() {
+    /*override fun onBackPressed() {
         if (!navController.popBackStack()) {
             super.onBackPressed()
         } else {
             navController.navigateUp()
         }
-    }
+    }*/
 }
 
 
