@@ -32,18 +32,36 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-      <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        app:layout_collapseMode="pin" />
-
     </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-    <com.google.android.material.tabs.TabLayout
+    <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="45dp"
+      android:layout_height="wrap_content"
+      android:background="@drawable/bg_tab"
+      android:orientation="horizontal"
       app:tabGravity="fill"
-      app:tabMode="fixed" />
+      app:tabMode="fixed">
+
+      <TextView
+        android:id="@+id/tasting_note"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_select_note_tap"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_weight="1"
+        android:text="테이스팅 노트🍷"/>
+
+      <TextView
+        android:id="@+id/today_recommend_wine"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_select_recommend_off"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="오늘의 추천 와인"/>
+    </LinearLayout>
+
   </com.google.android.material.appbar.AppBarLayout>
 
   <androidx.viewpager2.widget.ViewPager2

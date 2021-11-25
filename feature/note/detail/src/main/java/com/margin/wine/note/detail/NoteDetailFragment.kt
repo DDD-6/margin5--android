@@ -39,6 +39,8 @@ class NoteDetailFragment : Fragment() {
         wineAcidBody.text = wineNote.acid.toString()
         wineFlavorBody.text = wineNote.scentOne + " / " + wineNote.scentTwo + " / " + wineNote.scentThree //.joinToString(separator = " / ")
 
+        binding.imgPager.adapter = ImagePagerAdapter(List(5) { "" })
+
 
         when(wineNote.rating) {
             1 -> {

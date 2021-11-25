@@ -32,13 +32,13 @@ class AppActivity : AppCompatActivity(), ToFlowNavigate {
         navigator.navigateToFlow(flow)
     }
 
-    /*override fun onBackPressed() {
-        if (!navController.popBackStack()) {
-            super.onBackPressed()
+    override fun onBackPressed() {
+        if (navController.currentDestination?.id == R.id.mainFragment) {
+            finish()
         } else {
             navController.navigateUp()
         }
-    }*/
+    }
 }
 
 

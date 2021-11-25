@@ -1,5 +1,6 @@
 package com.margin.wine.main
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.viewpager2.widget.ViewPager2
 import com.margin.wine.main.databinding.FragmentMainBinding
 import com.margin.wine.navigator.NavigationFlow
 import com.margin.wine.navigator.ToFlowNavigate
@@ -30,9 +32,28 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+    private fun focusTab(isTastingNote: Boolean) {
+        if (isTastingNote) {
+            binding.tastingNote.setBackgroundResource(R.drawable.bg_select_note_tap)
+            binding.tastingNote.setTextColor(Color.WHITE)
+            binding.todayRecommendWine.setBackgroundResource(R.drawable.bg_select_recommend_off)
+            binding.todayRecommendWine.setTextColor(resources.getColor(R.color.color_333333, null))
+            binding.pager.currentItem = 0
+        } else {
+            binding.tastingNote.setBackgroundResource(R.drawable.bg_select_note_tap_off)
+            binding.tastingNote.setTextColor(resources.getColor(R.color.color_333333, null))
+            binding.todayRecommendWine.setBackgroundResource(R.drawable.bg_select_recommend_tap)
+            binding.todayRecommendWine.setTextColor(Color.WHITE)
+            binding.pager.currentItem = 1
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //args.eventId.toString()
+
+        binding.tastingNote.setOnClickListener { focusTab(true) }
+        binding.todayRecommendWine.setOnClickListener { focusTab(false) }
 
         /*requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -55,6 +76,12 @@ class MainFragment : Fragment() {
     private fun initPager() = with(binding.pager){
         adapter = MainPagerAdapter(requireActivity())
         isSaveEnabled = false
+        registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                if (position == 0) focusTab(true)
+                else focusTab(false)
+            }
+        })
     }
     
     private fun render() = lifecycleScope.launchWhenStarted {
