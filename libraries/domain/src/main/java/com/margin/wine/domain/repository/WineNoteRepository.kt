@@ -8,4 +8,6 @@ interface WineNoteRepository {
 
     suspend fun getWineNoteList(): List<WineNote>
 
+    suspend fun getWineNote(id: Int): WineNote
+
 }

@@ -8,6 +8,7 @@ import javax.inject.Inject
 class WineNoteDataMapper @Inject constructor() : DataMapper<WineNote, WineNoteData> {
 
     override fun toDomain(data: WineNoteData) = WineNote(
+        id = data.id,
         title = data.title,
         date = data.date,
         cardType = data.cardType,
@@ -17,7 +18,8 @@ class WineNoteDataMapper @Inject constructor() : DataMapper<WineNote, WineNoteDa
         wine = Wine(
             name = data.wineName,
             type = data.wineType,
-            price = data.winePrice
+            price = data.winePrice,
+            country = data.wineCountry
         ),
         body = data.body,
         sweet = data.sweet,
@@ -29,6 +31,7 @@ class WineNoteDataMapper @Inject constructor() : DataMapper<WineNote, WineNoteDa
     )
 
     override fun toData(domain: WineNote) = WineNoteData(
+        id = domain.id,
         title = domain.title,
         date = domain.date,
         cardType = domain.cardType,
@@ -44,6 +47,7 @@ class WineNoteDataMapper @Inject constructor() : DataMapper<WineNote, WineNoteDa
         rating = domain.rating,
         wineName = domain.wine.name,
         wineType = domain.wine.type,
+        wineCountry = domain.wine.country,
         winePrice = domain.wine.price
     )
 

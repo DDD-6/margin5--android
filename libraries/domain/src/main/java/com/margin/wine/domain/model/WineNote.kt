@@ -1,6 +1,7 @@
 package com.margin.wine.domain.model
 
 data class WineNote(
+    val id: Int = 0,
     val title: String = "",
     val date: String = "",
     val cardType: Int = 0,

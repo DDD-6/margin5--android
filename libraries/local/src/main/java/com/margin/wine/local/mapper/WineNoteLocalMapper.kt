@@ -23,10 +23,12 @@ class WineNoteLocalMapper @Inject constructor() : LocalMapper<WineNoteData, Wine
         rating = data.rating,
         wineName = data.wineName,
         wineType = data.wineType,
+        wineCountry = data.wineCountry,
         winePrice = data.winePrice
     )
 
     override fun toData(entity: WineNoteEntity) = WineNoteData(
+        id = entity.id,
         title = entity.title,
         date = entity.date,
         cardType = entity.cardType,
@@ -42,6 +44,7 @@ class WineNoteLocalMapper @Inject constructor() : LocalMapper<WineNoteData, Wine
         rating = entity.rating,
         wineName = entity.wineName,
         wineType = entity.wineType,
+        wineCountry = entity.wineCountry,
         winePrice = entity.winePrice
     )
 }

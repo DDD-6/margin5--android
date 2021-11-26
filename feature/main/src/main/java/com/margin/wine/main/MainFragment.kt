@@ -15,6 +15,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.margin.wine.main.databinding.FragmentMainBinding
 import com.margin.wine.navigator.NavigationFlow
 import com.margin.wine.navigator.ToFlowNavigate
+import com.margin.wine.note.detail.NoteDetailFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 

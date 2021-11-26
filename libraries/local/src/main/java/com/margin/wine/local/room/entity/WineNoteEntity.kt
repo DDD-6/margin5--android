@@ -25,5 +25,6 @@ data class WineNoteEntity(
     val rating: Int,
     val wineName: String,
     val wineType: String,
+    val wineCountry: String,
     val winePrice: Int
 )

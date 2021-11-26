@@ -12,6 +12,6 @@ class Navigator {
         is NavigationFlow.Sign -> navController.navigate(SplashFragmentDirections.actionSplashFragmentToSignFragment())
         is NavigationFlow.SignStepOne -> navController.navigate(SplashFragmentDirections.actionSplashFragmentToSignFragment())
         is NavigationFlow.WriteNote -> navController.navigate(MainFragmentDirections.actionMainFragmentToNoteWriteFragment())
-        is NavigationFlow.NoteDetail -> navController.navigate(MainFragmentDirections.actionMainFragmentToNoteDetailFragment())
+        is NavigationFlow.NoteDetail -> navController.navigate(MainFragmentDirections.actionMainFragmentToNoteDetailFragment(id = navigationFlow.id))
     }
 }

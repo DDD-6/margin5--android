@@ -1,6 +1,7 @@
 package com.margin.wine.data.source.model
 
 data class WineNoteData(
+    val id: Int,
     val title: String,
     val date: String,
     val cardType: Int,
@@ -16,5 +17,6 @@ data class WineNoteData(
     val rating: Int,
     val wineName: String,
     val wineType: String,
+    val wineCountry: String,
     val winePrice: Int
 )

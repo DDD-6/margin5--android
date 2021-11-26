@@ -196,7 +196,7 @@ class NoteWriteFragment : Fragment() {
             return false
         }
 
-        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(country = binding.wineCountry.toString()))
+        //noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(country = binding.wineCountry.toString()))
 
         if (noteWriteViewModel.wineNote.wine.alcoholContent == 0.0f) {
             if (isToast) context.toast("와인 도수를 선택해주세요")

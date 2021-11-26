@@ -19,4 +19,8 @@ class WineNoteRepositoryImpl @Inject constructor(
         return wineNoteDataMapper.toDomains(wineNoteLocalDataSource.getWineNoteDataList())
     }
 
+    override suspend fun getWineNote(id: Int): WineNote {
+        return wineNoteDataMapper.toDomain(wineNoteLocalDataSource.getWineNoteDataById(id))
+    }
+
 }

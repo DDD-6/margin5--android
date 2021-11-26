@@ -33,7 +33,7 @@ class ThumbnailViewModel @Inject constructor(
     }
 
     private fun mapToThumbnailViewState(wineNote: WineNote) = ThumbnailViewState(
-        id = 0,
+        id = wineNote.id,
         cardType = wineNote.cardType,
         thumbnail = "",
         title = wineNote.title,
