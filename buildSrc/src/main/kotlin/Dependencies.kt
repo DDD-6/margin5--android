@@ -4,13 +4,15 @@ object Dependencies {
     object DI {
         object Version {
             const val javaxInject = "1"
-            const val hiltVersion = "2.38.1"
+            const val hiltVersion = "2.40.2"
+            const val hiltAndroidVersion = "1.0.0-alpha01"
         }
 
         const val javaxInject = "javax.inject:javax.inject:${Version.javaxInject}"
 
         const val hiltAndroid = "com.google.dagger:hilt-android:${Version.hiltVersion}"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:${Version.hiltVersion}"
+        const val hiltAndroidCompiler = "androidx.hilt:hilt-compiler::${Version.hiltAndroidVersion}"
     }
 
     object Coroutines {
@@ -47,6 +49,14 @@ object Dependencies {
         override val components: List<String>
             get() = listOf(
                 DI.javaxInject, Coroutines.core
+            )
+    }
+
+    object FeatureCore : Libraries {
+        override val components: List<String>
+            get() = listOf(
+                DI.hiltAndroid,
+                DI.hiltCompiler
             )
     }
 }

@@ -3,6 +3,7 @@ package com.margin.wine.domain.model
 data class WineNote(
     val title: String = "",
     val date: String = "",
+    val cardType: Int = 0,
     val thumbnails: List<String> = listOf(),
     val note: String = "",
     val tags: List<String> = listOf(),
@@ -19,6 +20,7 @@ data class WineNote(
         fun mock() = WineNote(
             title = "오늘도 한  잔\uD83C\uDF77",
             date = "2020/10/10/월",
+            cardType = 1,
             thumbnails = listOf(),
             note = "사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인노트. ",
             tags = listOf(),

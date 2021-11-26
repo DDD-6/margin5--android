@@ -9,18 +9,22 @@ import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.margin.wine.core.ext.currentDate
 import com.margin.wine.core.ext.toast
-import com.margin.wine.write.card.WineCardSelect
 import com.margin.wine.write.card.WineCardSelectAdapter
 import com.margin.wine.write.databinding.FragmentNoteWriteBinding
 import com.margin.wine.write.select.WineSelect
 import com.margin.wine.write.select.WineSelectAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
+@AndroidEntryPoint
 class NoteWriteFragment : Fragment() {
 
     private val noteWriteViewModel by viewModels<NoteWriteViewModel>()
     private val binding by lazy { FragmentNoteWriteBinding.inflate(layoutInflater) }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,11 +35,24 @@ class NoteWriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.listCard.adapter = WineCardSelectAdapter().apply {
-            submitList(listOf(
-                WineCardSelect(R.drawable.ic_couple_2)
-            ))
+        binding.listCard.adapter = WineCardSelectAdapter(WineCardSelectAdapter.cardsRes()) {
+            noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(
+                cardType = it
+            )
         }
+
+        lifecycleScope.launchWhenStarted {
+            noteWriteViewModel.event.collect {
+                when(it) {
+                    is NoteWriteEvent.Close -> {
+                        println("Close")
+                        findNavController().navigateUp()
+                    }
+                    else -> { }
+                }
+            }
+        }
+
 
         initTitle()
         initInputNote()
@@ -47,6 +64,7 @@ class NoteWriteFragment : Fragment() {
         initSave()
     }
     private fun initTitle() {
+        binding.input.hint = currentDate()
         binding.input.addTextChangedListener {
             buttonValidate()
         }
@@ -115,7 +133,8 @@ class NoteWriteFragment : Fragment() {
     private fun initSave() = with(binding) {
         save.setOnClickListener {
             if (validateSave(isToast = true)) {
-                println("WineNote: ${noteWriteViewModel.wineNote}")
+                noteWriteViewModel.saveWineNote()
+                //println("WineNote: ${noteWriteViewModel.wineNote}")
             }
         }
     }
@@ -140,7 +159,9 @@ class NoteWriteFragment : Fragment() {
             return false
         }
 
-        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(title = binding.input.text.toString())
+        val title = binding.input.text.toString()
+        println("title $title")
+        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(title = title)
 
         if (binding.inputNote.text.isEmpty()) {
             if (isToast) context.toast("노트 내용을 입력해 주세요")
@@ -154,21 +175,21 @@ class NoteWriteFragment : Fragment() {
             return false
         }
 
-        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(name = binding.wineName.text.toString()))
+        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(name = binding.wineNameInput.text.toString()))
 
         if (binding.priceInput.text.isEmpty()) {
             if (isToast) context.toast("와인 가격을 입력해 주세요")
             return false
         }
 
-        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(price = binding.wineName.text.toString().toInt()))
+        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(price = binding.priceInput.text.toString().toInt()))
 
         if (noteWriteViewModel.wineNote.wine.type.isEmpty()) {
             if (isToast) context.toast("와인 종류를 선택해주세요")
             return false
         }
 
-        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(type = binding.wineType.toString()))
+        //noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(type = binding.wineType.toString()))
 
         if (noteWriteViewModel.wineNote.wine.country.isEmpty()) {
             if (isToast) context.toast("와인 원산지를 선택해주세요")
@@ -303,7 +324,7 @@ class NoteWriteFragment : Fragment() {
             rating3.setImageResource(R.drawable.ic_favorite_off)
             rating4.setImageResource(R.drawable.ic_favorite_off)
             rating5.setImageResource(R.drawable.ic_favorite_off)
-            noteWriteViewModel
+            buttonValidate()
         }
         rating2.setOnClickListener {
             noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(rating = 2)
@@ -312,6 +333,7 @@ class NoteWriteFragment : Fragment() {
             rating3.setImageResource(R.drawable.ic_favorite_off)
             rating4.setImageResource(R.drawable.ic_favorite_off)
             rating5.setImageResource(R.drawable.ic_favorite_off)
+            buttonValidate()
         }
         rating3.setOnClickListener {
             noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(rating = 3)
@@ -320,6 +342,7 @@ class NoteWriteFragment : Fragment() {
             rating3.setImageResource(R.drawable.ic_favorite_on)
             rating4.setImageResource(R.drawable.ic_favorite_off)
             rating5.setImageResource(R.drawable.ic_favorite_off)
+            buttonValidate()
         }
         rating4.setOnClickListener {
             noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(rating = 4)
@@ -328,6 +351,7 @@ class NoteWriteFragment : Fragment() {
             rating3.setImageResource(R.drawable.ic_favorite_on)
             rating4.setImageResource(R.drawable.ic_favorite_on)
             rating5.setImageResource(R.drawable.ic_favorite_off)
+            buttonValidate()
         }
         rating5.setOnClickListener {
             noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(rating = 5)
@@ -336,6 +360,7 @@ class NoteWriteFragment : Fragment() {
             rating3.setImageResource(R.drawable.ic_favorite_on)
             rating4.setImageResource(R.drawable.ic_favorite_on)
             rating5.setImageResource(R.drawable.ic_favorite_on)
+            buttonValidate()
         }
     }
 }

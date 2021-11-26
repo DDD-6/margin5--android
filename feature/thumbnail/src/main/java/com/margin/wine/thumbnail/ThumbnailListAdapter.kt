@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.margin.wine.core.ext.addUnderline
 import com.margin.wine.thumbnail.databinding.ItemThumbnailBinding
 import com.margin.wine.thumbnail.databinding.ItemThumbnailCardBinding
 
@@ -98,6 +99,17 @@ class ThumbnailListAdapter(
             binding.title.text = viewState.title
             binding.date.text = viewState.date
             binding.inputText.text = viewState.note
+            binding.inputText.addUnderline()
+
+            binding.card.setImageResource(
+                when(viewState.cardType) {
+                    1 -> R.drawable.ic_man
+                    2 -> R.drawable.ic_woman
+                    3 -> R.drawable.ic_couple
+                    4 -> R.drawable.ic_mans
+                    else -> R.drawable.ic_womans
+                }
+            )
 
             //spannableText(viewState)
         }

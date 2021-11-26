@@ -1,4 +1,4 @@
-package com.margin.wine.di
+package com.margin.wine.domain
 
 import javax.inject.Qualifier
 

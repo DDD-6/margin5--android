@@ -15,4 +15,5 @@ interface WineDao {
 
     @Query("SELECT * FROM wine")
     fun getWineListAsFlow(): Flow<List<WineEntity>>
+
 }

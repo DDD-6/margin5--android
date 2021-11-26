@@ -24,6 +24,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="24dp"
+        android:textStyle="bold"
         android:text="지친 도영님을 위한\n와인 한 잔 마무리🍷"
         android:textColor="#333333"
         android:textSize="24sp"

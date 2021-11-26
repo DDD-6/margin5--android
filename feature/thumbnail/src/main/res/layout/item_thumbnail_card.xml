@@ -56,11 +56,14 @@
     android:layout_marginTop="24dp"
     android:layout_marginEnd="20dp"
     android:layout_marginBottom="24dp"
+    android:lineSpacingExtra="12dp"
+    tools:text="@tools:sample/lorem/random"
     app:layout_constraintTop_toBottomOf="@id/wine_type"
     app:layout_constraintBottom_toTopOf="@id/title"
     />
 
   <ImageView
+    android:id="@+id/card"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="20dp"
@@ -68,7 +71,6 @@
     android:src="@drawable/ic_man"
     app:layout_constraintBottom_toBottomOf="@id/background"
     app:layout_constraintEnd_toEndOf="@id/background"
-
     />
 
   <!-- https://stackoverflow.com/questions/3626750/textview-wrap-around-view -->

@@ -5,12 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.margin.wine.navigator.NavigationFlow
 import com.margin.wine.navigator.ToFlowNavigate
 import com.margin.wine.thumbnail.databinding.FragmentThumbnailBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
+@AndroidEntryPoint
 class ThumbnailFragment : Fragment() {
 
+    private val thumbnailViewModel by viewModels<ThumbnailViewModel>()
     private val binding by lazy { FragmentThumbnailBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
@@ -21,10 +29,17 @@ class ThumbnailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.thumbnailList.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
 
-        binding.thumbnailList.adapter = ThumbnailListAdapter(ThumbnailViewState.mock()) { id ->
-            (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.NoteDetail(id))
+        lifecycleScope.launchWhenStarted {
+            thumbnailViewModel.wineNoteList.collect {
+
+                binding.thumbnailList.adapter = ThumbnailListAdapter(it) { id ->
+                    (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.NoteDetail(id))
+                }
+            }
         }
+
     }
 
     companion object {

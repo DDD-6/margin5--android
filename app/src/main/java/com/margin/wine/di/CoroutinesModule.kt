@@ -1,5 +1,9 @@
 package com.margin.wine.di
 
+import com.margin.wine.domain.DefaultDispatcher
+import com.margin.wine.domain.IoDispatcher
+import com.margin.wine.domain.MainDispatcher
+import com.margin.wine.domain.MainImmediateDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
