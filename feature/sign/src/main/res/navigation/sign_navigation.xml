@@ -12,10 +12,7 @@
     android:label="MainFragment"
     tools:layout="@layout/fragment_sign">
 
-    <argument
-      android:name="eventId"
-      android:defaultValue="0"
-      app:argType="integer"/>
+
     <action
       android:id="@+id/action_signFragment_to_signStepOneFragment"
       app:enterAnim="@anim/slide_in_left"

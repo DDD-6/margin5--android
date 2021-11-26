@@ -5,7 +5,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
-    id("androidx.navigation.safeargs.kotlin")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -47,11 +47,8 @@ dependencies {
     implementation(Dependencies.DI.hiltAndroid)
     kapt(Dependencies.DI.hiltCompiler)
 
-    val nav_version = "2.3.5"
-
-    // Kotlin
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation(Dependencies.Navigation.fragmentKtx)
+    implementation(Dependencies.Navigation.uiKtx)
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.0")

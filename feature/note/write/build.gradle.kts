@@ -6,7 +6,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
-    id("androidx.navigation.safeargs.kotlin")
+    id("androidx.navigation.safeargs")
 }
 
 dependencies {
@@ -18,11 +18,10 @@ dependencies {
 
     kapt("org.xerial:sqlite-jdbc:3.34.0")
 
-    val nav_version = "2.3.5"
+    implementation(Dependencies.Navigation.fragmentKtx)
+    implementation(Dependencies.Navigation.uiKtx)
 
-    // Kotlin
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation ("com.github.dhaval2404:imagepicker:2.1")
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.fragment:fragment-ktx:1.4.0")

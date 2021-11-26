@@ -19,7 +19,8 @@ class WineNoteDataMapper @Inject constructor() : DataMapper<WineNote, WineNoteDa
             name = data.wineName,
             type = data.wineType,
             price = data.winePrice,
-            country = data.wineCountry
+            country = data.wineCountry,
+            alcoholContent = data.wineAlcoholContent
         ),
         body = data.body,
         sweet = data.sweet,
@@ -48,7 +49,8 @@ class WineNoteDataMapper @Inject constructor() : DataMapper<WineNote, WineNoteDa
         wineName = domain.wine.name,
         wineType = domain.wine.type,
         wineCountry = domain.wine.country,
-        winePrice = domain.wine.price
+        winePrice = domain.wine.price,
+        wineAlcoholContent = domain.wine.alcoholContent
     )
 
 }

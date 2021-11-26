@@ -8,10 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.margin.wine.core.ext.toast
 import com.margin.wine.domain.Result
 import com.margin.wine.domain.model.WineNote
 import com.margin.wine.note.detail.databinding.FragmentNoteDetailBinding
+import com.solar.library.materialbottomsheet.BottomSheetConfig
+import com.solar.library.materialbottomsheet.BottomSheetItem
+import com.solar.library.materialbottomsheet.BottomSheetType
+import com.solar.library.materialbottomsheet.MaterialBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -41,23 +47,51 @@ class NoteDetailFragment : Fragment() {
                     is Result.Error -> { }
                 }
             }
+
+            noteDetailViewModel.wineNoteDeleteFlow.collect { result ->
+                when(result) {
+                    is Result.Loading -> { }
+                    is Result.Success -> {
+                        requireContext().toast(result.data)
+                        findNavController().navigateUp()
+                    }
+                    is Result.Error -> { }
+                }
+            }
         }
 
         binding.inputText.setLineColor(Color.BLACK)
         binding.inputText.setLineWeight(2.0f)
         binding.inputText.addSpaceHeight(12)
+
         noteDetailViewModel.loadWineNote(args.id)
     }
 
     private fun initBinding(wineNote: WineNote) = with(binding) {
+        more.setOnClickListener {
+            MaterialBottomSheet(requireContext())
+                .items(listOf(
+                    BottomSheetItem("삭제")
+                )) // List of 'BottomSheetItem'
+                .setRippleEffect(true) // Default is true
+                .type(BottomSheetType.LIST) // LIST, GRID
+                .select { index, item ->
+                    when(index) {
+                        0 -> {
+                            noteDetailViewModel.delete(args.id)
+                        }
+                    }
+                }
+                .show()
+        }
         title.text = wineNote.title
         date.text = wineNote.date
-        inputText.text = "사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인 노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인노트. 사진 없이 글로 적는 와인노트. "
+        inputText.text = wineNote.note
         wineNameBody.text = wineNote.wine.name
         winePriceBody.text = wineNote.wine.price.toString()
         wineTypeBody.text = wineNote.wine.type
         wineCountryBody.text = wineNote.wine.country
-        wineAlcoholContentBody.text = wineNote.wine.alcoholContent.toString()
+        wineAlcoholContentBody.text = wineNote.wine.alcoholContent.toString() + "%"
         wineBodyBody.text = wineNote.body.toString()
         wineSweetBody.text = wineNote.sweet.toString()
         wineAcidBody.text = wineNote.acid.toString()
@@ -65,6 +99,15 @@ class NoteDetailFragment : Fragment() {
 
         binding.imgPager.adapter = ImagePagerAdapter(List(5) { "" })
 
+        binding.cardImg.setImageResource(
+            when(wineNote.cardType) {
+                1 -> R.drawable.ic_man
+                2 -> R.drawable.ic_woman
+                3 -> R.drawable.ic_couple
+                4 -> R.drawable.ic_mans
+                else -> R.drawable.ic_womans
+            }
+        )
 
         when(wineNote.rating) {
             1 -> {

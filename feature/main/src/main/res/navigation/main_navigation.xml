@@ -18,7 +18,8 @@
       app:enterAnim="@anim/slide_in_left"
       app:exitAnim="@anim/fade_out"
       app:popEnterAnim="@anim/fade_in"
-      app:popExitAnim="@anim/slide_in_right">
+      app:popExitAnim="@anim/slide_in_right"
+      app:restoreState="true">
 
       <argument
         android:name="id"

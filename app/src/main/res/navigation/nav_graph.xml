@@ -20,6 +20,7 @@
       app:popEnterAnim="@anim/fade_in"
       app:popExitAnim="@anim/slide_in_right"
       app:destination="@id/main_navigation"
+      app:restoreState="true"
       app:popUpToInclusive="true"/>
 
     <action

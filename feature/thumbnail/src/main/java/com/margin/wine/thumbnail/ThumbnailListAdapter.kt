@@ -1,5 +1,6 @@
 package com.margin.wine.thumbnail
 
+import android.graphics.Color
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ImageSpan
@@ -99,7 +100,6 @@ class ThumbnailListAdapter(
             binding.title.text = viewState.title
             binding.date.text = viewState.date
             binding.inputText.text = viewState.note
-            binding.inputText.addUnderline()
 
             binding.card.setImageResource(
                 when(viewState.cardType) {
@@ -111,6 +111,9 @@ class ThumbnailListAdapter(
                 }
             )
 
+            binding.inputText.setLineColor(Color.BLACK)
+            binding.inputText.setLineWeight(2.0f)
+            binding.inputText.addSpaceHeight(36)
             //spannableText(viewState)
         }
 

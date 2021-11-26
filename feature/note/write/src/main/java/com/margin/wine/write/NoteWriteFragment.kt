@@ -1,16 +1,23 @@
 package com.margin.wine.write
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.margin.wine.core.ext.currentDate
 import com.margin.wine.core.ext.toast
 import com.margin.wine.write.card.WineCardSelectAdapter
@@ -41,19 +48,22 @@ class NoteWriteFragment : Fragment() {
             )
         }
 
+
         lifecycleScope.launchWhenStarted {
             noteWriteViewModel.event.collect {
-                when(it) {
+                when (it) {
                     is NoteWriteEvent.Close -> {
                         println("Close")
                         findNavController().navigateUp()
                     }
-                    else -> { }
+                    else -> {
+                    }
                 }
             }
         }
 
-
+        initAlcoholContent()
+        initImageSelect()
         initTitle()
         initInputNote()
         initWineName()
@@ -63,6 +73,93 @@ class NoteWriteFragment : Fragment() {
         initScent()
         initSave()
     }
+
+    private fun initAlcoholContent() {
+        binding.alcoholContentInput.addTextChangedListener {
+            noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(
+                wine = noteWriteViewModel.wineNote.wine.copy(alcoholContent = it.toString().toFloat())
+            )
+        }
+
+        buttonValidate()
+    }
+    private fun initImageSelect() {
+        binding.photoInsert.setOnClickListener {
+            ImagePicker.with(this)
+                .crop()
+                .compress(1024)
+                .createIntent { intent ->
+                    startForProfileImageResult.launch(intent)
+                }
+        }
+
+        binding.firstThumbnail.close.setOnClickListener {
+            noteWriteViewModel.images.removeAt(0)
+            refreshImages()
+        }
+        binding.secondThumbnail.close.setOnClickListener {
+            noteWriteViewModel.images.removeAt(1)
+            refreshImages()
+        }
+        binding.threeThumbnail.close.setOnClickListener {
+            noteWriteViewModel.images.removeAt(2)
+            refreshImages()
+        }
+
+    }
+
+    private val startForProfileImageResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            val resultCode = result.resultCode
+            val data = result.data
+
+            if (resultCode == Activity.RESULT_OK) {
+                //Image Uri will not be null for RESULT_OK
+                val fileUri = data?.data!!
+
+                noteWriteViewModel.images.add(fileUri)
+                refreshImages()
+
+            } else if (resultCode == ImagePicker.RESULT_ERROR) {
+                requireContext().toast(ImagePicker.getError(data))
+            } else {
+                requireContext().toast("Task Cancelled")
+            }
+        }
+
+    private fun refreshImages() {
+        when(noteWriteViewModel.images.size) {
+            0 -> {
+                binding.firstThumbnail.root.isVisible = false
+                binding.secondThumbnail.root.isVisible = false
+                binding.threeThumbnail.root.isVisible = false
+            }
+            1 -> {
+                binding.firstThumbnail.root.isVisible = true
+                binding.secondThumbnail.root.isVisible = false
+                binding.threeThumbnail.root.isVisible = false
+            }
+            2 -> {
+                binding.firstThumbnail.root.isVisible = true
+                binding.secondThumbnail.root.isVisible = true
+                binding.threeThumbnail.root.isVisible = false
+            }
+            3 -> {
+                binding.firstThumbnail.root.isVisible = true
+                binding.secondThumbnail.root.isVisible = true
+                binding.threeThumbnail.root.isVisible = true
+            }
+        }
+
+        noteWriteViewModel.images.forEachIndexed { index, uri ->
+            when(index) {
+                0 -> binding.firstThumbnail.img.setImageURI(uri)
+                1 -> binding.secondThumbnail.img.setImageURI(uri)
+                2 -> binding.threeThumbnail.img.setImageURI(uri)
+            }
+        }
+    }
+
     private fun initTitle() {
         binding.input.hint = currentDate()
         binding.input.addTextChangedListener {
@@ -94,14 +191,6 @@ class NoteWriteFragment : Fragment() {
         binding.wineCountryList.adapter = WineSelectAdapter(WineSelect.getWineCountryList()) {
             noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(
                 wine = noteWriteViewModel.wineNote.wine.copy(country = it.text)
-            )
-
-            buttonValidate()
-        }
-
-        binding.wineAlcoholContentList.adapter = WineSelectAdapter(WineSelect.getWineAlcoholContentList()) {
-            noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(
-                wine = noteWriteViewModel.wineNote.wine.copy(alcoholContent = 17.5f)
             )
 
             buttonValidate()
@@ -168,21 +257,27 @@ class NoteWriteFragment : Fragment() {
             return false
         }
 
-        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(note = binding.inputNote.text.toString())
+        noteWriteViewModel.wineNote =
+            noteWriteViewModel.wineNote.copy(note = binding.inputNote.text.toString())
 
         if (binding.wineName.text.isEmpty()) {
             if (isToast) context.toast("와인 이름을 입력해 주세요")
             return false
         }
 
-        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(name = binding.wineNameInput.text.toString()))
+        noteWriteViewModel.wineNote =
+            noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(name = binding.wineNameInput.text.toString()))
 
         if (binding.priceInput.text.isEmpty()) {
             if (isToast) context.toast("와인 가격을 입력해 주세요")
             return false
         }
 
-        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(price = binding.priceInput.text.toString().toInt()))
+        noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(
+            wine = noteWriteViewModel.wineNote.wine.copy(
+                price = binding.priceInput.text.toString().toInt()
+            )
+        )
 
         if (noteWriteViewModel.wineNote.wine.type.isEmpty()) {
             if (isToast) context.toast("와인 종류를 선택해주세요")
@@ -199,7 +294,7 @@ class NoteWriteFragment : Fragment() {
         //noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(wine = noteWriteViewModel.wineNote.wine.copy(country = binding.wineCountry.toString()))
 
         if (noteWriteViewModel.wineNote.wine.alcoholContent == 0.0f) {
-            if (isToast) context.toast("와인 도수를 선택해주세요")
+            if (isToast) context.toast("와인 도수를 입력해주세요")
             return false
         }
 
@@ -295,10 +390,13 @@ class NoteWriteFragment : Fragment() {
     }
 
     private fun List<TextView>.focusListOfOne(index: Int, type: String) {
-        when(type) {
-            "taste" -> noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(body = index + 1)
-            "sweet" -> noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(sweet = index + 1)
-            "acid" -> noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(acid = index + 1)
+        when (type) {
+            "taste" -> noteWriteViewModel.wineNote =
+                noteWriteViewModel.wineNote.copy(body = index + 1)
+            "sweet" -> noteWriteViewModel.wineNote =
+                noteWriteViewModel.wineNote.copy(sweet = index + 1)
+            "acid" -> noteWriteViewModel.wineNote =
+                noteWriteViewModel.wineNote.copy(acid = index + 1)
         }
         forEachIndexed { i, textView ->
             focusTaste(textView, i == index)

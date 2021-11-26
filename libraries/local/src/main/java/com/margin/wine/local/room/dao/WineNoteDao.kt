@@ -1,9 +1,6 @@
 package com.margin.wine.local.room.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.margin.wine.local.room.entity.WineNoteEntity
 
 @Dao
@@ -11,6 +8,9 @@ interface WineNoteDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertWineNote(wine: WineNoteEntity)
+
+    @Query("DELETE FROM wine_note WHERE id == :id")
+    suspend fun delete(id: Int)
 
     @Query("SELECT * FROM wine_note WHERE id == :id")
     suspend fun getWineNoteById(id: Int): WineNoteEntity

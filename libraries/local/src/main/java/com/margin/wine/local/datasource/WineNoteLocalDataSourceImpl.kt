@@ -15,6 +15,10 @@ class WineNoteLocalDataSourceImpl @Inject constructor(
         wineNoteDao.insertWineNote(wineNoteLocalMapper.toEntity(wineNoteData))
     }
 
+    override suspend fun delete(id: Int) {
+        wineNoteDao.delete(id)
+    }
+
     override suspend fun getWineNoteDataById(id: Int): WineNoteData {
         return wineNoteLocalMapper.toData(wineNoteDao.getWineNoteById(id))
     }

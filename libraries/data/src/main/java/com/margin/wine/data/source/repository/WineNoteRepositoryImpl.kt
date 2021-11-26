@@ -15,6 +15,10 @@ class WineNoteRepositoryImpl @Inject constructor(
         wineNoteLocalDataSource.save(wineNoteDataMapper.toData(wineNote))
     }
 
+    override suspend fun delete(id: Int) {
+        wineNoteLocalDataSource.delete(id)
+    }
+
     override suspend fun getWineNoteList(): List<WineNote> {
         return wineNoteDataMapper.toDomains(wineNoteLocalDataSource.getWineNoteDataList())
     }

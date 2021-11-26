@@ -6,6 +6,8 @@ interface WineNoteRepository {
 
     suspend fun save(wineNote: WineNote)
 
+    suspend fun delete(id: Int)
+
     suspend fun getWineNoteList(): List<WineNote>
 
     suspend fun getWineNote(id: Int): WineNote

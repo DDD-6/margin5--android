@@ -1,5 +1,6 @@
 package com.margin.wine.write
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.margin.wine.core.ext.currentDate
@@ -12,15 +13,17 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 @HiltViewModel
 class NoteWriteViewModel @Inject constructor(
     private val saveWineNoteUseCase: SaveWineNoteUseCase
 ) : ViewModel() {
 
+    val images: ArrayList<Uri> = arrayListOf()
+
     private val _event = MutableStateFlow<NoteWriteEvent>(NoteWriteEvent.Init)
     val event: StateFlow<NoteWriteEvent> = _event
-
 
     var wineNote = WineNote(
         date = currentDate()

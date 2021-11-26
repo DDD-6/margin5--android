@@ -14,7 +14,7 @@ import com.margin.wine.local.room.entity.WineNoteEntity
         WineEntity::class,
         WineNoteEntity::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 abstract class AppDataBase : RoomDatabase() {

@@ -15,6 +15,15 @@ object Dependencies {
         const val hiltAndroidCompiler = "androidx.hilt:hilt-compiler::${Version.hiltAndroidVersion}"
     }
 
+    object Navigation {
+        object Version {
+            const val navigation = "2.4.0-beta02"
+        }
+
+        const val fragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Version.navigation}"
+        const val uiKtx = "androidx.navigation:navigation-ui-ktx:${Version.navigation}"
+    }
+
     object Coroutines {
         object Version {
             const val coroutines = "1.5.2"

@@ -11,7 +11,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
-    id("androidx.navigation.safeargs.kotlin")
+    id("androidx.navigation.safeargs")
     id("com.google.gms.google-services")
     //apply(from = "../android.gradle.kts")
 }
@@ -49,17 +49,14 @@ dependencies {
 
     kapt("androidx.room:room-compiler:$room_version")
 
-    val nav_version = "2.3.5"
-
-    // Kotlin
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation(Dependencies.Navigation.fragmentKtx)
+    implementation(Dependencies.Navigation.uiKtx)
 
     // Feature module Support
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+    //implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
 
     // Testing Navigation
-    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+    //androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
 
 
     implementation("androidx.core:core-ktx:1.7.0")
