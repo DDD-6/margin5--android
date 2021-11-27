@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -47,7 +48,9 @@ class NoteDetailFragment : Fragment() {
                     is Result.Error -> { }
                 }
             }
+        }
 
+        lifecycleScope.launchWhenStarted {
             noteDetailViewModel.wineNoteDeleteFlow.collect { result ->
                 when(result) {
                     is Result.Loading -> { }
@@ -67,7 +70,15 @@ class NoteDetailFragment : Fragment() {
         noteDetailViewModel.loadWineNote(args.id)
     }
 
+    private fun initPager(images: List<String>) {
+        binding.imgPager.adapter = ImagePagerAdapter(images)
+    }
+
     private fun initBinding(wineNote: WineNote) = with(binding) {
+        if (wineNote.thumbnails.isNotEmpty()) {
+            cardImg.isVisible = false
+            initPager(wineNote.thumbnails)
+        }
         more.setOnClickListener {
             MaterialBottomSheet(requireContext())
                 .items(listOf(
@@ -97,7 +108,7 @@ class NoteDetailFragment : Fragment() {
         wineAcidBody.text = wineNote.acid.toString()
         wineFlavorBody.text = wineNote.scentOne + " / " + wineNote.scentTwo + " / " + wineNote.scentThree //.joinToString(separator = " / ")
 
-        binding.imgPager.adapter = ImagePagerAdapter(List(5) { "" })
+
 
         binding.cardImg.setImageResource(
             when(wineNote.cardType) {

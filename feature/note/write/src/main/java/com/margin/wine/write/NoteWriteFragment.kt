@@ -85,12 +85,17 @@ class NoteWriteFragment : Fragment() {
     }
     private fun initImageSelect() {
         binding.photoInsert.setOnClickListener {
-            ImagePicker.with(this)
-                .crop()
-                .compress(1024)
-                .createIntent { intent ->
-                    startForProfileImageResult.launch(intent)
-                }
+
+            if (noteWriteViewModel.images.size > 2) {
+                requireContext().toast("사진은 최대 3장까지 등록이 가능합니다.")
+            } else {
+                ImagePicker.with(this)
+                    .crop()
+                    .compress(1024)
+                    .createIntent { intent ->
+                        startForProfileImageResult.launch(intent)
+                    }
+            }
         }
 
         binding.firstThumbnail.close.setOnClickListener {
@@ -118,6 +123,9 @@ class NoteWriteFragment : Fragment() {
                 val fileUri = data?.data!!
 
                 noteWriteViewModel.images.add(fileUri)
+                noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(
+                    thumbnails = noteWriteViewModel.images.map { it.toString() }.toList()
+                )
                 refreshImages()
 
             } else if (resultCode == ImagePicker.RESULT_ERROR) {

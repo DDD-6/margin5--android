@@ -1,6 +1,7 @@
 package com.margin.wine.thumbnail
 
 import android.graphics.Color
+import android.net.Uri
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ImageSpan
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.margin.wine.core.ext.addUnderline
+import com.margin.wine.thumbnail.databinding.ItemAddBinding
 import com.margin.wine.thumbnail.databinding.ItemThumbnailBinding
 import com.margin.wine.thumbnail.databinding.ItemThumbnailCardBinding
 
@@ -20,6 +22,7 @@ class ThumbnailListAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when (list[position].type) {
+            ThumbnailType.PLUS -> ThumbnailType.PLUS.ordinal
             ThumbnailType.NORMAL -> ThumbnailType.NORMAL.ordinal
             ThumbnailType.CARD -> ThumbnailType.CARD.ordinal
         }
@@ -27,6 +30,14 @@ class ThumbnailListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThumbnailViewHolder {
         return when (viewType) {
+            ThumbnailType.PLUS.ordinal -> ItemAddViewHolder(
+                ItemAddBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                ),
+                onClick
+            )
             ThumbnailType.NORMAL.ordinal -> ThumbnailBasicViewHolder(
                 ItemThumbnailBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -58,6 +69,15 @@ class ThumbnailListAdapter(
 
     abstract class ThumbnailViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
+    class ItemAddViewHolder(
+        private val binding: ItemAddBinding,
+        private val onClick: (Int) -> Unit
+    ) : ThumbnailViewHolder(binding.root) {
+        init {
+            binding.plus.setOnClickListener { onClick(-1) }
+        }
+    }
+
     class ThumbnailBasicViewHolder(
         private val binding: ItemThumbnailBinding,
         private val onClick: (Int) -> Unit
@@ -75,6 +95,7 @@ class ThumbnailListAdapter(
             id = viewState.id
             binding.text.text = viewState.title
             binding.date.text = viewState.date
+            binding.img.setImageURI(Uri.parse(viewState.thumbnail))
         }
     }
 

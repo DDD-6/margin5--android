@@ -1,4 +1,4 @@
-package com.margin.wine.thumbnail
+package com.margin.wine.note.detail
 
 import android.content.Context
 import android.util.AttributeSet

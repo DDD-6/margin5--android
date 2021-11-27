@@ -4,7 +4,7 @@ data class WineNote(
     val id: Int = 0,
     val title: String = "",
     val date: String = "",
-    val cardType: Int = 0,
+    val cardType: Int = 1,
     val thumbnails: List<String> = listOf(),
     val note: String = "",
     val tags: List<String> = listOf(),

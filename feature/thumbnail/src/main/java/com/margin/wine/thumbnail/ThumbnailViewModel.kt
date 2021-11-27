@@ -28,19 +28,15 @@ class ThumbnailViewModel @Inject constructor(
         }
     }
 
-    fun asd() = viewModelScope.launch{
-
-    }
-
     private fun mapToThumbnailViewState(wineNote: WineNote) = ThumbnailViewState(
         id = wineNote.id,
         cardType = wineNote.cardType,
-        thumbnail = "",
+        thumbnail = wineNote.thumbnails.firstOrNull()?:"",
         title = wineNote.title,
         note = wineNote.note,
         wineName = wineNote.wine.name,
         wineType = wineNote.wine.type,
         date = wineNote.date,
-        type = ThumbnailType.CARD
+        type = if (wineNote.thumbnails.isNotEmpty()) ThumbnailType.NORMAL else ThumbnailType.CARD
     )
 }

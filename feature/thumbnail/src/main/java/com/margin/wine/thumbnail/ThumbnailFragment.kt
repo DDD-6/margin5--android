@@ -34,8 +34,10 @@ class ThumbnailFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
             thumbnailViewModel.wineNoteList.collect {
                 binding.thumbnailList.adapter = ThumbnailListAdapter(it) { id ->
-                    println("id: $id")
-                    (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.NoteDetail(id))
+                    when(id) {
+                        -1 -> (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.WriteNote)
+                        else -> (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.NoteDetail(id))
+                    }
                 }
             }
         }
