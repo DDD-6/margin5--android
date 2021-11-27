@@ -3,6 +3,7 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
+  android:background="@android:color/white"
   android:paddingTop="54dp"
   android:paddingStart="20dp"
   android:paddingEnd="20dp"
@@ -16,11 +17,15 @@
     layout="@layout/item_wine_info"/>
 
   <ImageView
+    android:id="@+id/img"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="0dp"
     android:layout_marginStart="16dp"
+    android:adjustViewBounds="true"
     android:src="@drawable/wine_sample_1"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="@id/wine_info"
+    app:layout_constraintBottom_toBottomOf="@id/wine_info"
     app:layout_constraintStart_toEndOf="@id/wine_info"/>
 
   <View

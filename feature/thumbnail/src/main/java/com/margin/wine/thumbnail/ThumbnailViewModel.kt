@@ -22,7 +22,21 @@ class ThumbnailViewModel @Inject constructor(
         viewModelScope.launch {
             when(val result = loadWineNoteUseCase(Any())) {
                 is Result.Success -> {
-                   wineNoteList.value = result.data.map(::mapToThumbnailViewState)
+                    wineNoteList.value =
+                        if (result.data.isNotEmpty()) result.data.map(::mapToThumbnailViewState)
+                        else listOf(
+                            ThumbnailViewState(
+                                0,
+                                0,
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ThumbnailType.PLUS
+                            )
+                        )
                 }
             }
         }

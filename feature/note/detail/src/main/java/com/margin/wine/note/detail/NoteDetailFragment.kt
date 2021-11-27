@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.margin.wine.core.ext.toast
+import com.margin.wine.core.ext.won
 import com.margin.wine.domain.Result
 import com.margin.wine.domain.model.WineNote
 import com.margin.wine.note.detail.databinding.FragmentNoteDetailBinding
@@ -99,7 +100,7 @@ class NoteDetailFragment : Fragment() {
         date.text = wineNote.date
         inputText.text = wineNote.note
         wineNameBody.text = wineNote.wine.name
-        winePriceBody.text = wineNote.wine.price.toString()
+        winePriceBody.text = wineNote.wine.price.won()
         wineTypeBody.text = wineNote.wine.type
         wineCountryBody.text = wineNote.wine.country
         wineAlcoholContentBody.text = wineNote.wine.alcoholContent.toString() + "%"

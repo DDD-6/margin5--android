@@ -49,10 +49,18 @@ class MainFragment : Fragment() {
         }
     }
 
+    private fun initTitle() {
+        binding.title.text = listOf(
+            "도영님,\n환영합니다.\uD83D\uDC4F",
+            "오늘도 수고한 당신\n와인이 위로하네 \uD83C\uDFB5",
+            "내추럴와인을 즐기는 도영님\n생각보다 한 수 위네? \uD83E\uDD23"
+        ).shuffled().first()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //args.eventId.toString()
-
+        initTitle()
         binding.tastingNote.setOnClickListener { focusTab(true) }
         binding.todayRecommendWine.setOnClickListener { focusTab(false) }
 

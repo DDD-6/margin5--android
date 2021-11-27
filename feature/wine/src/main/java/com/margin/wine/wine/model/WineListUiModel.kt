@@ -1,5 +1,7 @@
 package com.margin.wine.wine.model
 
+import com.margin.wine.wine.R
+
 sealed class WineListUiModel {
     data class WineList(
         val name: String,
@@ -10,6 +12,7 @@ sealed class WineListUiModel {
         val alcoholContent: Float,
         val ml: Int,
         val price: Int,
+        val imgRes: Int
     ) : WineListUiModel()
 
     data class WineListVertical(
@@ -21,6 +24,7 @@ sealed class WineListUiModel {
         val alcoholContent: Float,
         val ml: Int,
         val price: Int,
+        val imgRes: Int
     ) : WineListUiModel()
 
     data class Knowledge(
@@ -32,24 +36,37 @@ sealed class WineListUiModel {
     companion object {
         fun mock() = listOf(
             WineList(
-                name = "에스 쿠이코 오크드 샤도네이",
-                nameEng = "Es Cuiko Oaked Chardonnay, 2019",
-                price = 75000,
-                type = "Red",
-                country = "브라질",
-                alcoholContent = 12.6f,
+                name = "투썩 점퍼 와인즈, 황소 오가닉모나스트렐 \uD83C\uDDEA\uD83C\uDDF8 ",
+                nameEng = "Tussock Jumper, Bull Organic\nMonastrell, 2020",
+                price = 44000,
+                type = "레드",
+                country = "스페인",
+                alcoholContent = 17.0f,
                 ml = 750,
-                region = "쿠리코 밸리"
+                region = "후미야",
+                imgRes = R.drawable.wine_sample_1
             ),
             WineList(
-                name = "에스 쿠이코 오크드 샤도네이",
+                name = "에스 쿠이코 오크드 샤도네이 \uD83C\uDDE8\uD83C\uDDF1",
                 nameEng = "Es Cuiko Oaked Chardonnay, 2019",
-                price = 75000,
-                type = "Red",
-                country = "브라질",
-                alcoholContent = 12.6f,
+                price = 65000,
+                type = "화이트",
+                country = "칠레",
+                alcoholContent = 17.0f,
                 ml = 750,
-                region = "쿠리코 밸리"
+                region = "쿠리코 밸리",
+                imgRes = R.drawable.wine_sample_2
+            ),
+            WineList(
+                name = "스텔라 벨라, 카베르네 소비뇽 \uD83C\uDDE6\uD83C\uDDFA",
+                nameEng = "Stella Bella, Cabernet Sauvignon,\n2017",
+                price = 78000,
+                type = "레드",
+                country = "호주",
+                alcoholContent = 19.0f,
+                ml = 750,
+                region = "마가렛 리버",
+                imgRes = R.drawable.wine_sample_3
             ),
             Knowledge(
                 header = "오늘의\n지식",
@@ -64,23 +81,25 @@ sealed class WineListUiModel {
             ),
             WineListVertical(
                 title = "달달구리 최고봉 ",
-                subtitle = "샤또 롱보, 리브잘트 앙브레 \uD83C\uDDEB\uD83C\uDDF7 ",
-                price = 75000,
-                type = "Red",
-                country = "브라질",
-                alcoholContent = 12.6f,
-                ml = 750,
-                region = "쿠리코 밸리"
+                subtitle = "샤또 롱보, 리브잘트 앙브레 \uD83C\uDDEB\uD83C\uDDF7",
+                price = 69000,
+                type = "주정강화",
+                country = "프랑스",
+                alcoholContent = 16.0f,
+                ml = 500,
+                region = "랑그독 루씨용",
+                imgRes = R.drawable.other_sample_1
             ),
             WineListVertical(
-                title = "달달구리 최고봉 ",
-                subtitle = "샤또 롱보, 리브잘트 앙브레 \uD83C\uDDEB\uD83C\uDDF7 ",
-                price = 75000,
-                type = "Red",
-                country = "브라질",
-                alcoholContent = 12.6f,
+                title = "극강의 부드러움",
+                subtitle = "포르투 발도우로, 10년 숙성 포트 \uD83C\uDDF5\uD83C\uDDF9",
+                price = 73000,
+                type = "주정강화",
+                country = "포르투갈",
+                alcoholContent = 20.0f,
                 ml = 750,
-                region = "쿠리코 밸리"
+                region = "도우루",
+                imgRes = R.drawable.other_sample_2
             )
         )
     }

@@ -1,4 +1,5 @@
 import ProjectLibraries.domain
+import ProjectLibraries.core
 
 plugins {
     id("com.android.library")
@@ -6,6 +7,7 @@ plugins {
 }
 
 dependencies {
+    implementation(project(core))
     implementation(project(domain))
 
     implementation("androidx.core:core-ktx:1.7.0")

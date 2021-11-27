@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.margin.wine.wine.databinding.FragmentWineListBinding
 import com.margin.wine.wine.model.WineListUiModel
@@ -22,6 +25,16 @@ class WineListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = WineListAdapter(WineListUiModel.mock())
+        binding.wineListView.addItemDecoration(
+            DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL).apply {
+                ResourcesCompat.getDrawable(resources, R.drawable.item_divider, null)?.let { this.setDrawable(it) }
+            }
+        )
+        binding.wineListView.addItemDecoration(
+            DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL).apply {
+                ResourcesCompat.getDrawable(resources, R.drawable.item_divider, null)?.let { this.setDrawable(it) }
+            }
+        )
         binding.wineListView.adapter = adapter
         binding.wineListView.layoutManager = GridLayoutManager(requireContext(), 2).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

@@ -29,10 +29,13 @@ class ThumbnailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.thumbnailList.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+
 
         lifecycleScope.launchWhenStarted {
             thumbnailViewModel.wineNoteList.collect {
+                if (it.size > 1) {
+                    binding.thumbnailList.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+                }
                 binding.thumbnailList.adapter = ThumbnailListAdapter(it) { id ->
                     when(id) {
                         -1 -> (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.WriteNote)

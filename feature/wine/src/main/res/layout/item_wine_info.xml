@@ -13,6 +13,8 @@
     android:layout_height="wrap_content"
     android:textColor="#333333"
     android:textSize="16sp"
+    android:textStyle="bold"
+    android:lineSpacingExtra="4sp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -39,6 +41,7 @@
     android:layout_marginBottom="8dp"
     android:textSize="12sp"
     android:textColor="#333333"
+    android:textStyle="bold"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintBottom_toTopOf="@id/info_sub"
     tools:text="스페인  /  후미야  /  레드"/>
