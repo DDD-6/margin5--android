@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.margin.wine.navigator.NavigationFlow
+import com.margin.wine.navigator.ToFlowNavigate
 import com.margin.wine.sign.databinding.FragmentSignBinding
 import kotlinx.coroutines.flow.collect
 
@@ -32,12 +34,24 @@ class SignFragment : Fragment() {
 
     private fun initButtons() {
         binding.signIn.setOnClickListener {
-            findNavController().navigate(SignFragmentDirections.actionSignFragmentToSignStepOneFragment())
+            //findNavController().navigate(SignFragmentDirections.actionSignFragmentToSignStepOneFragment())
+        }
+
+        binding.signUp.setOnClickListener {
+
+        }
+
+        binding.next.setOnClickListener {
+            (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.SignToMain)
+            //findNavController().navigate(SignFragmentDirections.actionSignFragmentToSignStepOneFragment())
         }
     }
 
     private fun render() = lifecycleScope.launchWhenStarted {
         signViewModel.uiState.collect {
+            when(val state = it.signDataState) {
+
+            }
             /*when(val state = it.mainDataState) {
                 is MainContract.MainDataState.Idle -> binding.mainProgress.isVisible = false
                 is MainContract.MainDataState.Loading -> binding.mainProgress.isVisible = true

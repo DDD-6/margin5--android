@@ -22,7 +22,7 @@ class SignViewModel @Inject constructor() :
     }
     
     private fun getSignData() = viewModelScope.launch {
-        setState { copy(mainDataState = SignContract.SignDataState.Loading) }
+        setState { copy(signDataState = SignContract.SignDataState.Loading) }
         delay(2000L)
 
         /*val count = (fetchHomeWineListUseCase.invoke().getOrNull() ?: listOf()).count()

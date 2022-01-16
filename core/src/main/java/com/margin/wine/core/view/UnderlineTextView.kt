@@ -31,6 +31,7 @@ class UnderlineTextView : AppCompatTextView {
     }
 
     private fun init(context: Context) {
+        includeFontPadding = false
         mLinePaint = Paint()
         mLinePaint!!.strokeWidth = textSize / 18
         mLinePaint!!.color = textColors.defaultColor
@@ -56,7 +57,7 @@ class UnderlineTextView : AppCompatTextView {
             Log.d("UnderLineTextView", layout.getLineBottom(i).toString())
             Log.d("UnderLineTextView", paddingTop.toString())
             Log.d("UnderLineTextView", mSpaceHeight.toString())
-            val currentY = layout.getLineBottom(i) + paddingTop - mSpaceHeight + mAddHeight + if(i == lineCount-1) 37 else 0
+            val currentY = layout.getLineBottom(i) + paddingTop + mSpaceHeight + mAddHeight + if(i == lineCount-1) 37 else 0
             canvas.drawLine(
                 currentXStart,
                 currentY.toFloat(),

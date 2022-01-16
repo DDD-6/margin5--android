@@ -21,11 +21,9 @@ class SignStepTwoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View = binding.root
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.bottomBtn.initBottomBtn()
+        binding.btnNext.initBottomBtn()
     }
 
     private fun Button.initBottomBtn() {

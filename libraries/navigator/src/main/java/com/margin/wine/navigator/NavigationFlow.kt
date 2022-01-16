@@ -9,4 +9,6 @@ sealed class NavigationFlow {
     object WriteNote : NavigationFlow()
 
     data class NoteDetail(val id: Int) : NavigationFlow()
+
+    object SignToMain : NavigationFlow()
 }

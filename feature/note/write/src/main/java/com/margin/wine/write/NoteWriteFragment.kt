@@ -213,13 +213,13 @@ class NoteWriteFragment : Fragment() {
 
             buttonValidate()
         }
-        binding.wineScentListSecond.adapter = WineSelectAdapter(WineSelect.getWineScentList()) {
+        binding.wineScentListSecond.adapter = WineSelectAdapter(WineSelect.getWineScentList2()) {
             noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(
                 scentTwo = it.text
             )
             buttonValidate()
         }
-        binding.wineScentListThird.adapter = WineSelectAdapter(WineSelect.getWineScentList()) {
+        binding.wineScentListThird.adapter = WineSelectAdapter(WineSelect.getWineScentList3()) {
             noteWriteViewModel.wineNote = noteWriteViewModel.wineNote.copy(
                 scentThree = it.text
             )

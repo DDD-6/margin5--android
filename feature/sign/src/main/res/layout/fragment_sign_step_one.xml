@@ -64,14 +64,14 @@
     app:layout_constraintTop_toBottomOf="@id/sign_step_one_input"
     />
 
-  <Button
-    android:id="@+id/next_btn"
+  <com.margin.wine.sign.step.SignBottomButton
+    android:id="@+id/btn_next"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bg_btn_focus_on"
-    android:text="다음"
+    android:layout_height="48dp"
+    android:gravity="center"
     android:textColor="@android:color/white"
+    android:background="@drawable/bg_btn_focus_on"
     app:layout_constraintBottom_toBottomOf="parent"
-    />
+    android:text="다음"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

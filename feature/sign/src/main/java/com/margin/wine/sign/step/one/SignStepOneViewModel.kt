@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.margin.wine.core.arch.MviViewModel
 import com.margin.wine.sign.SignContract
+import java.util.regex.Pattern
 
 class SignStepOneViewModel :
     MviViewModel<SignStepOneContract.Event, SignStepOneContract.State, SignStepOneContract.Effect>() {
-
 
     private val _editTextLiveData = MutableLiveData<String>()
     val editTextLiveData: LiveData<String> get() = _editTextLiveData
@@ -19,7 +19,7 @@ class SignStepOneViewModel :
     }
 
     override fun createInitialState(): SignStepOneContract.State {
-        return SignStepOneContract.State(SignStepOneContract.SignDataState.Init)
+        return SignStepOneContract.State(SignStepOneContract.SignDataState.Init(false))
     }
 
     override fun handleEvent(event: SignStepOneContract.Event) {
@@ -28,15 +28,19 @@ class SignStepOneViewModel :
         }
     }
 
+    private fun String.isMatching(): Boolean {
+         return !Pattern.matches("^[ㄱ-ㅎ가-힣]*$", this) && Pattern.matches("^[a-zA-Z0-9]*$", this) && count() > 1
+    }
+
     private fun handleInputText(text: String) {
-        if (text.isEmpty()) {
+        if (text.isMatching()) {
             setState {
                 copy(
                     signDataState = SignStepOneContract.SignDataState.InputText(
                         text = text,
-                        guideText = "2자 이상 10자 이내 영문, 숫자 입력 가능합니다.",
-                        isClearInputText = false,
-                        isClickableBottomButton = false
+                        guideText = "사용 가능한 이름입니다.",
+                        isClearInputText = true,
+                        isClickableBottomButton = true
                     )
                 )
             }
@@ -45,8 +49,8 @@ class SignStepOneViewModel :
                 copy(
                     signDataState = SignStepOneContract.SignDataState.InputText(
                         text = text,
-                        guideText = "사용 가능한 이름입니다.",
-                        isClearInputText = true,
+                        guideText = "2자 이상 10자 이내 영문, 숫자 입력 가능합니다.",
+                        isClearInputText = false,
                         isClickableBottomButton = false
                     )
                 )

@@ -2,6 +2,7 @@ package com.margin.wine.navigator
 
 import androidx.navigation.NavController
 import com.margin.wine.main.MainFragmentDirections
+import com.margin.wine.sign.SignFragmentDirections
 import com.margin.wine.splash.SplashFragmentDirections
 
 class Navigator {
@@ -15,5 +16,7 @@ class Navigator {
         is NavigationFlow.NoteDetail -> navController.navigate(MainFragmentDirections.actionMainFragmentToNoteDetailFragment().also {
             it.id = navigationFlow.id
         })
+
+        is NavigationFlow.SignToMain -> navController.navigate(SignFragmentDirections.actionSignFragmentToMainFragment())
     }
 }

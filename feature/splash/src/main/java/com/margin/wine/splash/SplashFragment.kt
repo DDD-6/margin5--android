@@ -26,7 +26,7 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.root.postDelayed({
-            (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.WineFlow)
+            (requireActivity() as ToFlowNavigate).navigateToFlow(NavigationFlow.Sign)
         }, 1000L)
     }
 }

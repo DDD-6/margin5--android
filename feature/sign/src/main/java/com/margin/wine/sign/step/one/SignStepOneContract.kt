@@ -8,6 +8,7 @@ class SignStepOneContract {
 
     sealed class Event: UiEvent {
         data class OnChangedInputText(val str: String) : Event()
+        object OnClickNext : Event()
     }
 
     data class State(
@@ -15,14 +16,15 @@ class SignStepOneContract {
     ) : UiState
 
     sealed class SignDataState {
-        object Init : SignDataState()
+        data class Init(
+            val isClickableBottomButton: Boolean
+        ) : SignDataState()
         data class InputText(
             val text: String,
             val guideText: String,
             val isClearInputText: Boolean,
             val isClickableBottomButton: Boolean
         ) : SignDataState()
-        data class Success(val count: Int) : SignDataState()
     }
 
     sealed class Effect : UiEffect {

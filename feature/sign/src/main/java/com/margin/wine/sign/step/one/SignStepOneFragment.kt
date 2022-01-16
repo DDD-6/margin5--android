@@ -6,16 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.margin.wine.sign.SignContract
-import com.margin.wine.sign.SignFragmentDirections
 import com.margin.wine.sign.databinding.FragmentSignStepOneBinding
 import kotlinx.coroutines.flow.collect
 
@@ -42,10 +38,11 @@ class SignStepOneFragment : Fragment() {
     private fun render() = lifecycleScope.launchWhenStarted {
         signStepOneViewModel.uiState.collect {
             when(val state = it.signDataState) {
+                is SignStepOneContract.SignDataState.Init -> binding.btnNext.enabled(state.isClickableBottomButton)
                 is SignStepOneContract.SignDataState.InputText -> {
-                    //(binding.signStepOneInput as TextView).text = state.text
                     binding.signStepOneGuide.text = state.guideText
                     binding.inputClearBtn.isVisible = state.isClearInputText
+                    binding.btnNext.enabled(state.isClickableBottomButton)
                 }
             }
         }
@@ -61,11 +58,12 @@ class SignStepOneFragment : Fragment() {
 
     private fun initViews() = with(binding) {
         signStepOneInput.initEditText()
-        nextBtn.initBottomBtn()
+        btnNext.initBottomBtn()
     }
 
     private fun Button.initBottomBtn() {
         setOnClickListener {
+            signStepOneViewModel.setEvent(SignStepOneContract.Event.OnClickNext)
             findNavController().navigate(SignStepOneFragmentDirections.actionSignStepOneFragmentToSignStepTwoFragment())
         }
     }

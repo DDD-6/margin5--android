@@ -11,7 +11,7 @@ class SignContract {
 	}
 	
 	data class State(
-		val mainDataState: SignDataState
+		val signDataState: SignDataState
 	) : UiState
 	
 	sealed class SignDataState {
